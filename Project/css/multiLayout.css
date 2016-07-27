@@ -1,0 +1,41 @@
+#ChannelMonitortable{
+	margin: 15px 20px;
+	width: 97%;
+	height: 95%;
+}
+#ChannelMonitortable td{
+	border: 1px solid #eee;
+}
+#ChannelMonitortable th{
+	border: 1px solid #aaa;
+	height:25px;
+}
+#ChannelMonitortable img{
+	width:180px;
+	height:110px;
+	transition:all 1s
+}
+#ChannelMonitortable img:hover{
+	transform:scale3d(1.1,1.05,1.1);
+}
+
+#operatorChannelsTable{
+	border:1px solid #aaa;
+}
+
+.monitorProfileTable td{
+	border:none !important;
+}
+
+table.monitorProfileTable {
+  width: 100%;
+  text-align: center;
+}
+.monitorProfileTable .infoChannelStatus.past{
+	/*margin: 8px 0px 0px -70px !important;*/
+	margin-top:5px;
+	margin-left:30%;
+}
+#ChannelMonitortable #operatorChannelsTable thead{
+	background:#eee;
+}

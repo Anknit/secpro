@@ -1,0 +1,101 @@
+html, body, table, tr, td, input, button, textarea{
+	font-size:12px;
+	font-family: Arial;
+}
+/*table,tr,td{
+	border: 1px solid black;
+}
+*/table caption{
+	padding:2px
+}
+td div{
+	padding:1px;
+}
+.item_container_div{
+	margin: 2px 5px;
+}
+hr{
+	margin: 10px 0px;
+	padding: 0px;
+	width:100%;
+}
+textarea{
+	resize:none;
+}
+label{
+	margin:5px;
+}
+.menu_container{
+	margin-bottom: 10px;
+	height:20px;
+}
+.container_div{
+	margin:5px;
+	padding:5px;
+}
+.f_l{
+	float:left;
+}
+.f_r{
+	float:right;
+}
+.sub_list_container{
+	/*min-height: 150px;
+	max-height: 300px;
+	min-width:600px;
+	max-width:850px;
+	*/
+	height: 300px;
+	width:850px;
+	margin:auto;
+	display:none;
+}
+.list_table_container{
+	max-width:400px;
+	overflow:auto;
+}
+.container_div thead tr{
+	background: #ccc;
+}
+.swap_button_container{
+	float: left;
+	margin: 1% 1%;
+}
+#node_add_form{
+	width:400px;
+	height:280px;
+	margin: auto;
+	padding:10px;
+	border: 1px solid green;
+	display:none;
+}
+#bouquet_add_form{
+	width:400px;
+	height:280px;
+	margin: auto;
+	padding:10px;
+	border: 1px solid green;
+	display:none;
+}
+.new_node_item_container{
+	margin:auto;
+}
+.new_bouquet_item_container{
+	margin:auto;
+}
+#node_add_form,#bouquet_add_form input[type='text']{
+	width:300px;
+	height:25px;
+}
+#node_add_form,#bouquet_add_form input[type='button']{
+	width:100px;
+	height:25px;
+}
+#node_add_form,#bouquet_add_form textarea{
+	width:300px;
+	height:180px;
+	overflow:auto;
+}
+.c_p{
+	cursor:pointer;
+}

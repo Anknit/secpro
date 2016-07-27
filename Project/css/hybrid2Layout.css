@@ -1,0 +1,173 @@
+#ChannelMonitorHybrid {
+	overflow-y: scroll;
+}
+
+#ChannelMonitorHybrid .ErrorInfoContent thead tr:nth-child(2) th {
+	box-sizing: border-box;
+}
+
+#ChannelMonitorHybrid .rowDiv:not(.newDiv) {
+    position: relative;
+}
+
+#HybridBottomPanel {
+	overflow-y: scroll;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.channelListDiv {
+	width: 216.2px;
+	background-color: #eee;
+	float: left;
+	margin: 6px 0px 0px 6px;
+	display: inline-block;
+	position: relative;
+	padding: 5px;
+}
+
+.channelListDiv div {
+	display: inline-block;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	width: 100%;
+	text-align: center;
+	padding: 2px 5px;
+	box-sizing: border-box;
+	color: #AAAAAA;
+}
+
+.channelListDiv div span {
+	font-size: 0.8em;
+}
+
+.rowDiv {
+	width: 100%
+}
+
+.newDiv {
+	visibility: hidden;
+	position: absolute;
+	left: -999999;
+}
+
+span.tooltipUrlText {
+	font-weight: bold;
+}
+
+.tooltipDiv .proHybrid {
+	width: 100%;
+}
+
+span.tooltipUpdateTimeContainerText {
+	font-weight: bold;
+}
+
+.tooltipChannel {
+	font-weight: bold;
+}
+.tooltipUrl {
+    word-break: break-word;
+}
+.newErrorClass {
+	background-color: #BB0000;
+}
+
+.newErrorClass>div {
+	color: #000;
+}
+
+.monitoringStarted {
+    background-color: #008800;	
+}
+.monitoringStarted>div {
+    color: #000;
+}
+
+.pinIcon {
+    position: absolute;
+    right: -5px;
+    display: block !important;
+    top: -8px;
+    width: 25px !important;
+    color:	#D4BD0A !important;
+    font-size: 20px;
+    z-index: 99;
+    transform: rotateZ(-40deg);
+}
+
+@-moz-document url-prefix() { 
+  .pinIcon, .unpinAllIcon {
+     font-family: Segoe UI Symbol;
+  }
+}
+
+.pinned .pinIcon {
+    transform: rotateZ(0deg);
+	color: #00b0ff !important;
+}
+
+.rowDiv .pinIcon {
+    top: 0px;
+    right: 0px;
+    position: absolute;
+}
+
+.unpinAllIcon {
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    font-size: 28px;
+    padding-left: 6px;
+    right: 0;
+    z-index: 100;
+    padding-bottom: 5px;
+    border: 5px solid red;
+    border-radius: 100%;
+    color: #111111;
+    background: #fff;
+    text-decoration: line-through;
+    box-shadow: 3px 6px 10px #999;
+    bottom: 5px;
+    cursor: pointer;
+    transform: rotate(45deg);
+}
+
+.unpinAllIcon:not(.disableUnpinAll):hover {
+    box-shadow: 2px 4px 6px #aaa;
+}
+
+.disableUnpinAll{
+	border: 5px solid rgba(0, 0, 0, 0.28) !important;
+    color: rgba(17, 17, 17, 0.5) !important;
+    cursor: no-drop !important;
+}
+
+.unpinAllIcon:active, disableUnpinAll:active {
+ cursor: move !important;
+}
+
+.upArrow , .downArrow {
+	font-size: 21px;
+    border: 1px solid #ccc;
+    color: #8FBC8F;
+}
+
+.upArrow {
+	display: none;
+    position: absolute;
+    top: 0px;
+    right: 82px;
+}
+
+.downArrow {
+	display: none;
+    position: absolute;
+    top: 0px;
+    right: 52px;
+}
+
+.rowDiv.pinned .upArrow, .rowDiv.pinned .downArrow {
+    display: block;
+}

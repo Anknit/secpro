@@ -1,0 +1,426 @@
+html, body {
+	margin:0px;
+	overflow-y:hidden;
+	font-family: Arial;
+	font-size:13px;
+}
+
+a {
+	color:#366E96;
+	text-decoration:none;
+}      /* unvisited link */
+a:visited {color:#366E96;}  /* visited link */
+a:hover {color:#366E96;}  /* mouse over link */
+a:active {color:#366E96;}  /* selected link */
+
+.CompletePage {
+	float:left;
+	height:100%;
+	width:100%;
+	overflow:hidden !important;
+	background-color:#ffffff;
+}
+
+.Header{
+	float:left;
+	height:40px;
+	width:100%;
+	top:0px;
+}
+.Footer{
+float: left;
+height: 35px;
+width: 100%;
+position: fixed;
+bottom: 0px;
+background-color: #333;
+z-index: 11;
+}
+
+.FooterContent {
+	text-align: center;
+	color: white;
+	font-size:11px;
+	margin-top:3px;
+}
+.FooterCentralContent{
+	float:left;
+	margin-left:30%;
+	width:40%;
+}
+
+.FooterRightContent{
+	float:right;
+	padding-right:20px;
+}
+
+.CenterBody {
+	float:left;
+	margin-top:0%;
+	width:100%;
+/*	overflow-y:auto;
+	overflow-x:hidden;*/
+}
+
+.panelOnTop{
+	float:right;
+	padding:10px;
+}
+
+.formDemarkation{
+	color: gray;
+	opacity: 0.15;
+}
+
+.ppulogo{
+	height:60px;
+	width:180px;
+	margin-top:10px;
+}
+/*.GlobalInfoSection{
+	display:none;
+	float:right;
+    position: fixed;    
+/*	padding:10px;
+    position: fixed;    Take it out of the flow of the document 
+    left: 0;            Left edge at left for now 
+    right: 0;          /* Right edge at right for now, so full width  
+    top: 5%;         /* Move it down from top of window 
+    width: 200px;      /* Give it the desired width  
+    height: 50px;      /* Give it the desired width  
+    z-index: 100;    /* Whatever needed to force to front (1 might do) 	
+	background-color:#CCC;
+	border-radius:5px;
+	padding:5px;
+}
+*/
+
+.GlobalInfoSection{
+	display:none;
+  	right: 20px;
+    position: fixed;
+    top: 0px;
+    height: 56px;
+    float: right;
+    z-index: 100;
+    border-radius: 5px;
+    padding: 0px 5px;
+    margin: auto;
+    /* border: 1px solid #E4E5E5; */
+    border-top: none;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    font-family: Arial;
+    font-size: 12px;
+}
+.GlobalInfoSection div{
+	display: table-cell;
+    vertical-align: middle;
+}
+.GlobalProfileInfo{
+	display:none;
+	float:right;
+    right: 2.7%;          /* Right edge at right for now, so full width */ 
+    position: fixed;    
+/*	padding:10px;
+    position: fixed;    Take it out of the flow of the document 
+    left: 0;            Left edge at left for now */
+    top: 0.5%;         /* Move it down from top of window */
+    z-index: 100;    /* Whatever needed to force to front (1 might do) */	
+	padding:5px;
+	font-family: Arial;
+	font-size: 14px;
+}
+
+.CentralizeDiv {
+	display:none;
+	float:right;
+    position: fixed;    
+	padding:10px;
+    left: 0;
+    right: 0;
+    top: 5%;
+    width: 200px;
+    height: 50px;
+    z-index: 100;
+	border-radius:5px;
+	padding:5px;
+}
+
+.GlobalProfileInfoItems {
+	float:left;
+	margin-left:5px;	
+}
+
+.GridBorders {
+	border:1px solid #E4E5E5;
+	padding:10px;
+	border-radius:3px;
+}
+
+.usersTableRows td{
+	border-bottom: 1px solid #E4E5E5;
+}
+.usersTableHeadings th{
+	border-right: 1px solid #e1e1e5;
+}
+.usersTableHeadings{
+	background-color: #eee;
+	font-family: Arial;
+	font-size: 14px;
+	height: 35px;
+}
+
+.browseFrame {  
+	position: absolute;
+	display: none;
+	background-color: #EEEEEE;
+	width:400px; 
+	border:1px solid #6891CC;
+	cursor:move;
+}
+
+.tabDiv{
+	position: relative;
+	width: 100%;
+}
+
+.AnimateMessagesBar{
+	position:fixed;
+	bottom:0;
+	width:40%;
+	max-width:60%;
+	align:center;
+	margin:auto;
+	left:0;
+	right:0;
+	height:auto;
+	max-height:100px;
+	background-color:#E3FFA7;
+	color: black;
+	margin-bottom: 50px;
+	opacity:0.8;
+	display:none;
+	border-radius: 3px;
+}
+.ScrollMessagesContent{
+	width:90%;
+	max-width:90%;
+	height:auto;
+	min-height:30px;
+	max-height:90px;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:14px;
+	padding:2% 3% 2% 3%;
+/*	padding-top:5px;*/
+	float:left;
+	/*text-align:center;*/
+	overflow:hidden;
+	overflow-y:auto;
+    word-wrap: break-word;
+	opacity:1.0;
+}
+
+.rightAlign{
+	text-align: right;
+}
+
+.table_borders{
+    border: 2px solid #eee;
+}
+
+.table_borders td{
+	border-bottom: 1px solid #E4E5E5;
+}
+.table_borders a{
+	font-size: 14px;
+}
+.set_font_12{
+	font-size: 12px;
+}
+
+.vertical_Center{
+	vertical-align: middle;
+}
+
+.buttonsPPU{
+	font-size:12px;
+	cursor:pointer;
+	font-family:Arial;
+}
+
+.minimumMargins {
+	margin-top:8px;
+	margin-bottom:5px;
+	vertical-align:middle;
+}
+
+button{
+	font-weight:bold;
+	font-family:Arial;
+	cursor:pointer;
+}
+
+.smallButton {
+	height:20px !important;
+	width:80px !important;
+}
+
+.mediumButton {
+	height:25px !important;
+	width:80px !important;
+}
+
+.largeButton {
+	height:30px !important;
+	width:80px !important;
+}
+
+.xxlargeButton {
+	height:30px !important;
+	width:175px !important;
+}
+
+.miniInputBox {
+	height:20px !important;
+	width:100px !important;
+}
+
+.smallInputBox {
+	height:20px;
+	width:150px;
+}
+
+.mediumInputBox {
+	height:25px !important;
+	width:175px !important;
+}
+
+.largeInputBox {
+	height:30px !important;
+	width:200px !important;
+}
+
+.xxlargeInputBox {
+	height:30px !important;
+	width:300px !important;
+}
+
+.textAreaBox {
+	height:120px;
+	width: 174px !important;
+}
+
+.largeTextAreaBox {
+	height:200px !important;
+	width:600px !important;
+}
+
+.input200x20 {
+	height:20px !important;
+	width:200px !important;
+}
+
+.input600x20 {
+	height:20px !important;
+	width:600px !important;
+}
+
+.imagebutton {
+	cursor:pointer;
+}
+
+/*This class shall not be used in js for any operation*/
+.dimension_175x25 {
+	height:25px;
+	width:175px;
+}
+
+.dimension_170x20 {
+	height:20px;
+	width:170px;
+}
+.jqx-button-custom{
+font-style: normal !important;
+font-size: 13px !important;
+}
+
+img.hoverEffect:hover{
+	background:darkgray;
+}
+ul li.menuItems{
+	font-family: Arial; 
+	padding:5px; 
+	min-width:100px; 
+	min-height:20px; 
+	display:inline-block;
+	text-align:center;
+}
+ul li.menuItems:hover{
+	background:#f0f0f0;
+}
+ul li.menuItems:focus{
+	background:#f0f0f0;
+	outline:none;
+	border-bottom: 1px solid #366E96;
+}
+#main_monitor th{
+	border: 1px solid black;
+	background: #ccc;
+	min-width:150px;
+}
+#main_monitor div{
+	width:100%;
+	text-align:center;
+}
+#main_monitor{
+	width:100%;
+	border:1px solid black;
+}
+#main_monitor span{
+	float:left;
+}
+#main_monitor img{
+	height:60px;
+	width:60px;
+}
+/* For Nova Logo in admin interface*/
+img.NovaLogo {
+	height: 32px;
+    margin-left: 20px;
+}
+/* For tagline below nova icon in admin interface */
+a.NovaTagline::after {
+    content: "Live stream monitoring service";
+    display: block;
+    margin-left: 22px;
+    color:#264E76;
+    font-size:12px;
+}
+a.NovaTagline{
+	float:left;
+	margin-right:20px;
+}
+.operatorHeaderContainer a.NovaTagLine {
+    display: table-cell !important;
+    width: 200px;
+}
+.operatorHeaderContainer #menuBar {
+    display: table-cell;
+    vertical-align: middle;
+    /* padding: 5px; */
+    top: 0px !important;
+    background-color: transparent;
+    border: 0px;
+}
+.operatorHeaderContainer #menuBar ul{
+    background-color: #e8e8e8;
+    border: 1px solid #c5c5c5;
+    border-radius: 3px;
+    padding: 2px;
+    margin-right: 15px;
+}
+.operatorHeaderContainer{
+	display:table;
+    padding: 5px 0px;
+}

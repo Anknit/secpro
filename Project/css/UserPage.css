@@ -1,0 +1,509 @@
+.JqxMenus{
+	position: relative;
+	top: 1%;
+	margin:auto;
+	font-size:13px !important;
+}
+
+#manageUsersMenu{
+	position: absolute;
+	top: 5.5%;
+	left: 0%;
+}
+
+#editUserTable{
+	margin-left: 10%;
+	margin-top: 5%;
+	width: 80%;
+}
+#changeStatusButton{
+	position: absolute;
+	top: 70%;
+	left: 45%;
+}
+#subsType{
+	position: absolute;
+	top: 5.5%;
+	left: 0%;
+}
+#PriceDiv{
+	position: absolute;
+	top: 85%;
+	left: 25%;
+}
+#cartPanel{
+	position: absolute;
+	top: 5.5%;
+	left: 75%;
+}
+#AddTOCartButton{
+	position: absolute;
+	top: 90%;
+	left: 25%;
+}
+#userList{
+	
+}
+#userListPanel{
+	position: absolute;
+	top: 8%;
+	left: 2%;
+	width: 20%;
+	height: 98%;
+}
+#subscriptionPanel{
+	position: absolute;
+	top: 8%;
+	left: 25%;
+	width: 70%;
+	height: 60%;
+}
+#subsoptions{
+	position: absolute;
+	top: 0%;
+	left: 35%;	
+}
+#FeaturesTable{
+	width: 100%;
+}
+#PackageTable{
+	width: 100%;
+}
+fieldset{
+	border-color: black;
+	width: 95%;
+}
+#ppufeaturesdiv{
+	position: relative;
+	top: 8%;
+	left: 3%;
+	width: 90%;
+}
+#packages{
+	position: absolute;
+	top: 55%;
+	left: 10%;
+	width:75%;
+}
+#DetailsMonthly{
+	width: 90%;
+	position: absolute;
+	top: 10%;
+	left: 3%;
+}
+#addToCart{
+	position: absolute;
+	top: 60%;
+	left: 35%;
+}
+#cartDiv{
+	position: absolute;
+	top: 20%;
+	left: 10%;
+	width: 80%;
+}
+#payment{
+	position: absolute;
+	top: 50%;
+	left: 10%;
+	width: 75%;
+}
+#profileName{
+position: relative;
+}
+
+#profileDetails{
+position: relative;
+top: 10px;
+left: 0px;
+right: 0px;
+height: 520px;
+width: 100%;
+overflow:auto;
+max-height:85%
+}
+#SMTPdiv{
+	position: relative;
+	margin-top: 5px; 
+}
+#myUserTable{
+position: relative;
+top: 0%;
+left: 0%;
+padding: 0;
+width: 98%;
+}
+.column_MyTable{
+	font-size: 12px;
+	text-align: left;
+}
+
+.column_editButton{
+	text-align: center;
+	font-size: 12px;
+}
+
+.column_status{
+	text-align: center;
+	font-size: 12px;
+}
+.dynamicCheckBox{
+	float: left;
+}
+.baseFeatureCheVoucherTabckBox{
+	float: left;
+}
+#personalInfoDiv{
+position: relative;
+width: 98%;
+height:100%;
+}
+
+.detailsTable{
+	font-size: small;
+	padding: 10px;
+}
+
+.detailsTable td{
+	padding: 10px;
+	border-bottom: 1px solid #eee;
+}
+#SubscriptionInfoDiv{
+position: relative;
+left: 1%;
+top: 0.5%;
+width: 67%;
+height: 98%;
+}
+
+.monthlyFeatures{
+	align: center;
+	display: none;
+}
+.jqx-dropdownlist-content{
+	outline: none;
+border: none;
+float: left;
+position: relative;
+width: 80px;
+height: 25px;
+left: 0px;
+top: 0px;
+margin-top: 2px;
+margin-bottom: 2px;
+background-color: transparent;
+}
+
+.row_MyTable{
+	height: 25px;
+}
+#CreditGenerationOption{
+/*position: relative;
+top: 0%;
+left: 1%;
+width: 98%;
+height: 85%;
+*/}
+#creditAmountInfoDiv{
+	position:relative;
+	left:40%;
+}
+#monthlyfeaturesdiv{
+	position: relative;
+	top: 8%;
+	left: 3%;
+	width: 90%;
+}
+
+#accountTabMenu{
+	position: relative;
+	top: 1%;
+	left: 1%;
+}
+#accountTabMenu li{
+	width: 175px;
+	height: 30px;
+}
+#SubsTypeAndCreditInfo{
+float: left;
+position: relative;
+top: 0.5%;
+left: 0.5%;
+height: 99.5%;
+width: 99%;
+}
+#SelfSubscription{
+float: left;
+position: relative;
+top: 0.5%;
+left: 0.5%;
+height: 99%;
+width: 99%;
+}
+
+.extra_Values{
+	visibility: hidden;
+}
+
+.SubHeadingDiv{
+	margin-top: 20px;
+	margin-left: 50px;
+}
+
+.imageButton:hover{
+	width:24px; height:20px;
+    border:inset 1px grey;
+    border-radius:3px;  box-shadow: 5px 8px 7px #888888;
+    transition-property:width,height;
+    transition-duration:200ms;
+                           }
+.imageButton{width:15px; height:15px;}
+ 
+.column1_MyTable{
+	font-size: 12px;
+	font-family: Arial;
+}
+
+hr {
+	margin:0;
+}
+#supportSeekingForm{
+	width: 800px;
+	margin-top: 20px;
+	margin-left: 40px;
+}
+#supportSubmitStatus{
+	display:none;
+	padding:10px;
+	width: 500px;
+//	height: 300px;
+//	background-color: #eee;
+//	max-height: 350px;
+//	overflow-y: scroll;
+	margin-top: 20px;
+	margin-left: 40px;
+	text-align:justify;
+}
+
+#postSupportActions{
+	display:none;
+	margin-left: 40px;
+	margin-top: 15px;
+	max-width: 500px;
+}
+
+.Enforce_font_x14 {
+	font-size:14px !important;
+	font-family:Arial !important;
+	font-weight:100 !important;
+}
+
+.Enforce_font_x13 {
+	font-size:13px !important;
+	font-family:Arial !important;
+	font-weight:100 !important;
+}
+
+Table.tableBorder1 {
+	font-size: 12px;
+	font-family: Arial;
+}
+
+#DashboardInput .dateTimeInput, #channelsListDropDown{
+	float:left;
+	margin:15px;
+	margin-left: 2px;
+}
+#DashboardInput span.inputLabel{
+	float: left;
+	margin: 15px 0px 15px 10px;
+	height: 25px;
+	padding: 5px;
+	font-weight: bold;
+}
+
+.ui-state-default.ui-th-column.ui-th-ltr,.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{
+	background:#eee !important;
+}
+
+.ui-jqgrid tr.ui-search-toolbar th {
+	border-top:none;	
+}
+.ui-jqgrid-caption{
+	text-align: center !important;
+}
+.ui-jqgrid-titlebar.ui-jqgrid-caption.ui-widget-header.ui-corner-top.ui-helper-clearfix{
+	border: 1px solid #ddd !important;
+	background: #eee !important;
+}
+.ui-jqgrid-titlebar-close{
+	display: none !important;
+}
+.weekdayContainer {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.weekdayContainer span {
+  border: 1px solid #aaa;
+  padding: 2px;
+  margin: 0px;
+  cursor: pointer;
+}
+.repeatOnDay{
+  background-color: #666;
+  color: #fff;
+  cursor: pointer;
+  border-color: #aaa;
+}
+.weekdayContainer span:not(.repeatOnDay):hover{
+  background-color: #ddd;
+}
+.jqx-radiobutton{
+	font:12px Arial;
+}
+.jqx-radiobutton-check-checked{
+	background:#666 !important;
+}
+#channel_edit_form{
+	max-width:1200px !important;
+	width:1150px !important;
+}
+#editChannelTabContainer{
+	height:85% !important;	
+}
+#editChannelNameSpan{
+	margin:3px;
+}
+.schedulerOption{
+	margin:5px;
+	clear:both;
+	float:left;
+}
+table#scheduleListTable {
+  border: 1px solid #ccc;
+  border-spacing: 0px;
+  width: 1100px;
+}
+#scheduleListTable thead{
+	background-color: #ccc; 
+	text-align: center;
+}
+#scheduleListTable thead tr{
+	display:block; 
+	position:relative;
+}
+#scheduleListTable thead th:nth-child(1), #scheduleListTable tbody td:nth-child(1){
+	width:30px;
+}
+#scheduleListTable thead th:nth-child(2), #scheduleListTable tbody td:nth-child(2){
+	width:200px;
+}
+#scheduleListTable thead th:nth-child(3), #scheduleListTable tbody td:nth-child(3){
+	width:200px;
+}
+/*#scheduleListTable thead th:nth-child(4), #scheduleListTable tbody td:nth-child(4){
+	width:170px;
+}*/
+#scheduleListTable thead th:nth-child(4), #scheduleListTable tbody td:nth-child(4){
+	width:150px;
+}
+#scheduleListTable thead th:nth-child(5), #scheduleListTable tbody td:nth-child(5){
+	width:200px;
+}
+#scheduleListTable thead th:nth-child(6), #scheduleListTable tbody td:nth-child(6){
+	width:170px;
+}
+#scheduleListTable thead th:nth-child(7), #scheduleListTable tbody td:nth-child(7){
+	width:150px;
+}
+#scheduleListTable thead th{
+	text-align:center;
+	height:30px;
+	padding: 3px 1px; 
+	margin: 0px;
+	border-width:0px 0px 0px 0px;
+	border-color:#aaa;
+	border-style:solid;
+	box-sizing:border-box;
+}
+table#scheduleListTable tbody tr{
+	height:30px;
+}
+table#scheduleListTable tbody tr:hover {
+  background-color: #eee;
+  cursor: pointer;
+}
+
+table#scheduleListTable tbody td{
+	text-align:center;
+	padding:3px 1px;
+	height:30px;
+	margin:0px;
+	border-width:0px 1px 1px 0px;
+	border-color:#aaa;
+	border-style:solid;
+	box-sizing:border-box;
+}
+#scheduleConfirmButton{
+	margin: 10px auto;
+	width: 250px;
+	text-align: center;
+	visibility:hidden;
+}
+#scheduleTableBody{
+	display: block; 
+	height: 165px; 
+	overflow: auto; 
+	width: 100%;
+}
+#foreverSchedule{
+	text-align:center !important;
+	font-size:12px !important;
+}
+.jqx-checkbox {
+  text-align: left;
+  border: none;
+  outline: none;
+  margin: auto !important;
+  white-space: nowrap;
+  font-size: 12px !important;
+  text-overflow: ellipsis;
+}
+tr.newProfile::after {
+  content: 'New';
+  position: ;
+  display: table-cell;
+  vertical-align: middle;
+  border-radius: 5px;
+  border: 1px solid #00ff00;
+  padding: 5px;
+  margin-left: 10px;
+  font-size: 10px;
+  margin-top: 3px;
+  text-align:center;
+}
+tr.notPresentProfile{
+	cursor:no-drop;
+}
+tr.notPresentProfile select{
+	cursor:no-drop !important;
+}
+tr.notPresentProfile::after {
+  content: 'Absent';
+  display: table-cell;
+  vertical-align: middle;
+  border-radius: 5px;
+  border: 1px solid #ff0000;
+  padding: 5px;
+  margin-left: 10px;
+  font-size: 10px;
+  margin-top: 3px;
+  text-align:center;
+}
+
+/* For timezone in scheduling modal div */
+div#currentTimezone {		
+    position: absolute;
+    margin-top: -22px;
+    right: 10px;
+}
