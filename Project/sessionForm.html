@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript" src="Utilities.js"></script>
+<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/md5.js"></script>
+
+<script>
+ var gSessionID = 0; 
+ var version= "1.0"; 
+function OnBtnclick(event)
+{
+	var BtnID = event.target.id
+	gAppURI = "MessageHandler.php";
+	var respStr; 
+	var tokenarray;
+	var nameValueArr=[]; 
+	var  tokenValueArr;
+	
+	switch(BtnID)
+	{			
+	case 'submitname':
+		var respStr = RPC_SessionInitialize();	
+		var retArr = RPC_Detokenize(respStr);
+		if(retArr.length > 0)
+		{
+			if(retArr[0][1] == 'SUCCESS')
+				gSessionID = retArr[1][1];
+			else 
+				gSessionID = 0; 
+		}
+		alert("Message=" + retArr[2][1]); 
+		/*
+		tokenarray  = respStr.split('&'); 
+		for(var j=0; j < tokenarray.length; j++)
+		{
+			tokenValueArr = tokenarray[j].split('='); 
+			nameValueArr.push(tokenValueArr); 
+		}
+		*/ 
+		
+		break;	
+	case 'getname':
+		respStr = RPC_Client_GetUserName(); 
+		var retArr = RPC_Detokenize(respStr);
+		alert(retArr); 
+		break; 
+	case 'testtoken':
+		var teststr = 'STATUS=FAIL&SESSIONID=12334&ARRAY_NAMES=rajau | chandan | kancha | manish | anil'; 
+		var retArr = RPC_Detokenize(teststr);
+		alert(retArr); 
+		break; 
+	case 'getlicense':		
+		var retstr = AJX_RPCSend(gSessionID, 'RPC',  'RPC_GetLicenseInfo', '');
+		alert(retstr); 
+		break; 
+	case 'validateusage':		
+		var paramStr = '&JOB_ID=' + 'J1032'  + '&FILE_NAME=' + 'test123.mp4' + '&CONTENT_DURATION=' + '35'
+		+ '&ARRAY_LENGTH=' + '2' + '&FEATURELIST[]=' + 'BASE' + '&FEATURELIST[]=' + 'LOUDNESS_CORRECTION'/*
+		+ '&FEATURELIST[]=' + 'PSE'*/; 
+		var retstr = AJX_RPCSend(gSessionID, 'RPC',  'RPC_ValidateUsage', paramStr);
+		alert(retstr); 
+		break; 
+	case 'confirmusage':
+		var paramStr = '&JOB_ID=' + 'J1032'; 
+		var retstr = AJX_RPCSend(gSessionID, 'RPC',  'RPC_ConfirmDebit', paramStr);
+		alert(retstr); 		
+		break;
+	case 'closesession':		
+		var retstr = AJX_RPCSend(gSessionID, 'RPC',  'RPC_CloseSession', '');
+		alert(retstr); 		
+		break; 
+	case 'starttimer':
+		var timeInt =  4000; 
+		StartTimer(timeInt);
+		break; 
+	default:
+		break; 
+	}		
+}
+
+function RPC_Detokenize(string)
+{
+	//1st level detokenization '&'
+	var outputArray=[]; 
+	var firstLevelDetokArr; 
+	var secondLevelDetokArr;
+	var thirdLevelDetokArr; 
+	
+	firstLevelDetokArr = string.split('&'); 	
+	for(var i1=1; i1 <firstLevelDetokArr.length; i1++)
+	{
+		//DETOKENIZE 2ND LEVEL 
+		secondLevelDetokArr = firstLevelDetokArr[i1].split('='); 
+		//FOR EACH DETOKENIZE STRING DETERMINE IF THE INITIAL SUBSTRING HAS "ARRAY_" FOLLOWED BY NAME OF THE ARRAY
+		var arrsign = secondLevelDetokArr[0].substring(0, 6); 	
+		//IF YES THEN DETEOKENIZE IT FURTHER BASED ON '=' 
+		if(arrsign == 'ARRAY_')
+		{
+			//DETOKENIZE THE VALUE STRING FURTHER BASED ON '|'
+			var arrName = secondLevelDetokArr[0].substring(6,secondLevelDetokArr[0].length); 
+			var thirdLevelDetokArr = secondLevelDetokArr[1].split('|');			
+			//NOW AD THIS TO THE MAIN ARRAY WITH SUBSCRIPT NOTATION. 
+			for(var i2=0; i2 <thirdLevelDetokArr.length; i2++)
+			{
+				var tempArr = [arrName+'[' + i2 + ']', thirdLevelDetokArr[i2] ]; 
+				outputArray.push(tempArr); 
+			}			
+		}
+		//IF NO THEN PARSE IT ACCORDING TO SINGLE VALUE ARGUEMENT 
+		else
+		{
+			var tempArr = [secondLevelDetokArr[0], secondLevelDetokArr[1]];
+			outputArray.push(tempArr); 
+		}	
+	}
+	
+	return outputArray;
+}
+
+function RPC_SessionInitialize()
+{
+	//get all the values first 
+	var userIDNode = document.getElementById('userID');
+	var userID = userIDNode.value;
+	var passwordNode = document.getElementById('password'); 
+	var password =CryptoJS.MD5(passwordNode.value); 	
+	var suid = 'ABCD100123'; 
+	var service_family = 'PULSAR'; 
+	var service_id = 'PPU'; 
+	var param = '&USERID='+userID + '&PASSWORD='+password + '&SUID='+suid +  '&SERVICE_FAMILY='+service_family; 
+	//var param = '&PASSWORD='+password + '&SUID='+suid +  '&SERVICE_FAMILY='+service_family;
+	 
+	var respStr = AJX_RPCSend('', 'RPC',  'RPC_SessionInitialize', param);
+	
+	return respStr; 	
+}
+
+/*
+	PHPSESSIONID --  NULL as default 	
+ *  USERID -- user mail ID should be provided as User ID
+	PASSWORD-- md5 password. 
+	SUID -- system unique ID 
+	SERVICE_FAMILY -- SERVICE FAMILY say : "PULSAR" 
+	SERVICE_ID  --  "PPU" | "SAS" | "PRO" ETC.. 
+	*/
+	
+function RPC_Client_GetUserName()
+{	
+	var respStr = AJX_RPCSend(gSessionID, 'RPC',  'RPC_GetUserID', '');
+	return respStr; 
+}
+
+function StartTimer(timeInterval)
+{
+	var myVar = setInterval(function(){SendHeartBeat();}, timeInterval);
+}
+
+function SendHeartBeat()
+{
+	var respStr = AJX_RPCSend(gSessionID, 'RFT',  '', '');	
+	alert(respStr); 
+	//return respStr; 
+}
+
+</script>
+</head>
+<body>
+	<div>
+		 <label>User ID<input type="text" id="userID" value='' /></label><br><br>
+		 <label>Your Pasword<input type="text" id="password"  value=''/></label>		 	 
+		 <input id='submitname' type="button"  value='Submit' onclick="OnBtnclick(event)"/>
+		 
+	</div>
+	
+	<input id='getname' type='button' value="GetName" onclick="OnBtnclick(event)" />
+	<input id='testtoken' type='button' value="TestDetokenization" onclick="OnBtnclick(event)" />'
+	<input id='getlicense' type='button' value="GetLicense" onclick="OnBtnclick(event)" />
+	<input id='validateusage' type='button' value="ValidateUsage" onclick="OnBtnclick(event)" />
+	
+	<input id='confirmusage' type='button' value="ConfirmUsage" onclick="OnBtnclick(event)" />
+	<input id='closesession' type='button' value="CloseSession" onclick="OnBtnclick(event)" />
+	<input id='starttimer' type='button' value="StartTimer" onclick="OnBtnclick(event)" />
+</body>
+</html>
