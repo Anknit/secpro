@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="nova"
+ targetNamespace="ns1:nova/nova.wsdl"
+ xmlns:tns="ns1:nova/nova.wsdl"
+ xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+ xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+ xmlns:ns1="ns1:nova"
+ xmlns:novaagent="http://tempuri.org/novaagent.xsd"
+ xmlns:SOAP="http://schemas.xmlsoap.org/wsdl/soap/"
+ xmlns:HTTP="http://schemas.xmlsoap.org/wsdl/http/"
+ xmlns:MIME="http://schemas.xmlsoap.org/wsdl/mime/"
+ xmlns:DIME="http://schemas.xmlsoap.org/ws/2002/04/dime/wsdl/"
+ xmlns:WSDL="http://schemas.xmlsoap.org/wsdl/"
+ xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+<types>
+
+ <schema targetNamespace="ns1:nova"
+  xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:ns1="ns1:nova"
+  xmlns:novaagent="http://tempuri.org/novaagent.xsd"
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  elementFormDefault="unqualified"
+  attributeFormDefault="unqualified">
+  <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+  <!-- operation request element -->
+  <element name="RequestMonitoringData">
+   <complexType>
+    <sequence>
+     <element name="type" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- ns1__RequestMonitoringData::type -->
+     <element name="userID" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns1__RequestMonitoringData::userID -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="ListOfString">
+   <complexType>
+    <sequence>
+     <element name="vecOfString" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/><!-- ns1__ListOfString::vecOfString -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="WebNotification">
+   <complexType>
+    <sequence>
+     <element name="type" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- ns1__WebNotification::type -->
+     <element name="id" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- ns1__WebNotification::id -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="NotifyResponce">
+   <complexType>
+    <sequence>
+     <element name="Responce" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns1__NotifyResponce::Responce -->
+     <element name="vecOfString" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/><!-- ns1__NotifyResponce::vecOfString -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="GenerateReport">
+   <complexType>
+    <sequence>
+     <element name="userID" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns1__GenerateReport::userID -->
+     <element name="channelIdList" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- ns1__GenerateReport::channelIdList -->
+     <element name="startTime" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- ns1__GenerateReport::startTime -->
+     <element name="endTime" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- ns1__GenerateReport::endTime -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="GenerateReportResponse">
+   <complexType>
+    <sequence>
+     <element name="Res" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns1__GenerateReport::Res -->
+    </sequence>
+   </complexType>
+  </element>
+ </schema>
+
+ <schema targetNamespace="http://tempuri.org/novaagent.xsd"
+  xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:ns1="ns1:nova"
+  xmlns:novaagent="http://tempuri.org/novaagent.xsd"
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  elementFormDefault="unqualified"
+  attributeFormDefault="unqualified">
+  <import namespace="ns1:nova"/>
+  <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+  <simpleType name="base64Binary"><!-- novaagent__base64Binary -->
+
+   <restriction base="xsd:base64Binary">
+   </restriction>
+  </simpleType>
+ </schema>
+
+</types>
+
+<message name="RequestMonitoringData">
+ <part name="Body" element="ns1:RequestMonitoringData"/><!-- ns1__RequestMonitoringData::ns1__RequestMonitoringData -->
+</message>
+
+<message name="ListOfString">
+ <part name="Body" element="ns1:ListOfString"/><!-- ns1__RequestMonitoringData::ResultStringArr -->
+</message>
+
+<message name="WebNotification">
+ <part name="Body" element="ns1:WebNotification"/><!-- ns1__WebNotification::ns1__WebNotification -->
+</message>
+
+<message name="NotifyResponce">
+ <part name="Body" element="ns1:NotifyResponce"/><!-- ns1__WebNotification::Res -->
+</message>
+
+<message name="GenerateReportRequest">
+ <part name="Body" element="ns1:GenerateReport"/><!-- ns1__GenerateReport::ns1__GenerateReport -->
+</message>
+
+<message name="GenerateReportResponse">
+ <part name="Body" element="ns1:GenerateReportResponse"/>
+</message>
+
+<portType name="novaPortType">
+ <operation name="RequestMonitoringData">
+  <documentation>Service definition of function ns1__RequestMonitoringData</documentation>
+  <input message="tns:RequestMonitoringData"/>
+  <output message="tns:ListOfString"/>
+ </operation>
+ <operation name="WebNotification">
+  <documentation>Service definition of function ns1__WebNotification</documentation>
+  <input message="tns:WebNotification"/>
+  <output message="tns:NotifyResponce"/>
+ </operation>
+ <operation name="GenerateReport">
+  <documentation>Service definition of function ns1__GenerateReport</documentation>
+  <input message="tns:GenerateReportRequest"/>
+  <output message="tns:GenerateReportResponse"/>
+ </operation>
+</portType>
+
+<binding name="nova" type="tns:novaPortType">
+ <SOAP:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+ <operation name="RequestMonitoringData">
+  <SOAP:operation soapAction="RequestMonitoringData"/>
+  <input>
+     <SOAP:body parts="Body" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="Body" use="literal"/>
+  </output>
+ </operation>
+ <operation name="WebNotification">
+  <SOAP:operation soapAction="WebNotification"/>
+  <input>
+     <SOAP:body parts="Body" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="Body" use="literal"/>
+  </output>
+ </operation>
+ <operation name="GenerateReport">
+  <SOAP:operation soapAction="GenerateReport"/>
+  <input>
+     <SOAP:body parts="Body" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="Body" use="literal"/>
+  </output>
+ </operation>
+</binding>
+
+<service name="nova">
+ <documentation>gSOAP 2.8.18 generated service definition</documentation>
+ <port name="nova" binding="tns:nova">
+  <SOAP:address location="http://192.168.0.113:9091"/>
+ </port>
+</service>
+
+</definitions>
