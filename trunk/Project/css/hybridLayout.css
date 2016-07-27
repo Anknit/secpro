@@ -1,0 +1,114 @@
+#mainDiv{
+	display: table;
+	width: 100%;
+}
+
+#ChannelMonitorHybrid .rowDiv {
+  display: block;
+  border-bottom: 1px solid #ccc;
+  margin-top: 10px;
+  padding-bottom: 10px;
+}
+#ChannelMonitorHybrid .summarydiv {
+  display: inline-block;
+  width: 210px;
+  vertical-align:top;
+  margin:5px 10px 0px 0px;
+  /* box-sizing: border-box; */
+}
+#ChannelMonitorHybrid .ErrorInfoContent{
+  display: inline-block;
+  width: 100%;
+  width: -webkit-calc(100% - 450px);
+  width: -moz-calc(100% - 450px);
+  width: calc(100% - 450px);
+  vertical-align: top;
+  margin: 5px 10px 0px 0px;
+  max-height: 200px;
+  height: 180px;
+  box-sizing: border-box;
+  overflow:hidden;
+}
+#ChannelMonitorHybrid img{
+	width:180px;
+	height:110px;
+	transition:all 1s;
+}
+#ChannelMonitorHybrid img:hover{
+	transform:scale3d(1.1,1.05,1.1);
+}
+.proHybrid {
+  padding: 5px;
+  font-weight:bold;
+  box-sizing: border-box;
+  width: 90%;
+}
+.sumHybrid {
+  padding: 5px;
+  border-bottom: 1px solid #eee;
+  width: 90%;
+  box-sizing: border-box;
+  font-weight: bold;
+}
+#ChannelMonitorHybrid .ErrorInfoContent thead tr:nth-child(2) th{
+	border-bottom:2px solid #eee;
+}
+#ChannelMonitorHybrid .channelInfoBodyDiv{
+	width:100%;
+	overflow:auto;
+	height:150px;
+}
+#ChannelMonitorHybrid .ErrorInfoContent #channelInfoBody td{
+	border-bottom: 1px solid #f7f7f7;
+/*	border-left: 1px solid #eee;*/
+    vertical-align: top;
+}
+.proEntry {
+  display: table;
+  width: 100%;
+  margin: 2px 0px;
+  border-bottom: 1px solid #eee;
+  box-sizing: border-box;
+}
+.proN {
+  float: left;
+}
+.proR {
+  float: right;
+}
+.proEntry.inactive {
+	color:#ccc;
+}
+#ChannelMonitorHybrid .channelContainer{
+	  height: 175px !important;
+	  background:none;
+}
+#ChannelMonitorHybrid .channelInfo{
+	width: 180px;
+	display: table;
+	background-color: #eee;
+	margin-top: 5px;
+}
+
+#ChannelMonitorHybrid .infoChannelStatus.past{
+	display:none;
+}
+#ChannelMonitorHybrid .infoChannelStatus.present{
+	float: left; 
+	margin-left: 15px;
+}
+
+#ChannelMonitorHybrid .infoChannelAudio{
+	margin-top: -35px; 
+	margin-left:145px;
+}
+
+#ChannelMonitorHybrid .updateTimeContainer{
+	float: right;margin: 0;position: relative;
+}
+
+
+.channelInfoBodyErrorMsg{
+/* 	width:860px; */
+	word-break: break-all;
+}

@@ -1,0 +1,73 @@
+/* 
+    Created on : 5 Aug, 2014, 10:55:42 AM
+    Author     : venera
+*/
+table.Login{
+	padding: 15px 15px;
+}
+table.td.Login{
+	padding: 2px 2px;
+}
+
+#welcomeHead{
+	position: relative;
+	width: 100%;
+	height: 8%;
+	color: #FFB700;
+	text-align: center;
+	font-size: xx-large;
+	padding-top: 6%;
+	background: none repeat scroll 0% 0% #F5F5DC;
+}
+
+#LoginForm{
+	position: relative;
+    margin-top: 150px;
+}
+
+fieldset{
+border: 1px solid #eee;
+width: 400px;
+}
+
+#Status{
+font-family: Arial;
+float: left;
+height: 30px;
+width: 100%;
+position: relative;
+top: 0px;
+color: #F00;
+}
+
+
+div#signUpModal {
+
+     position: absolute;
+     top: 0px;
+     left: 0px;
+     width: 100%;
+     
+
+     display: none;
+     height: 100%;
+     z-index: 123;
+     background-color: rgba(17,17,17,0.3);
+
+}
+div#signUpDiv{
+
+     display: table-cell;
+     vertical-align: middle;
+     margin: auto;
+     text-align: center;
+
+}
+
+div#signUpDiv form{
+
+     width: 50%;
+     margin: auto;
+     background-color: #fff;
+
+}

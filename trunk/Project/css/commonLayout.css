@@ -1,0 +1,221 @@
+.monitor_container{
+	margin:10px auto;
+	width: 98%;
+	height: 95%;
+}
+.channelContainer{
+	width: 210px;
+	height: 195px;
+	margin: 5px 10px 0px 0px;
+	background: #eee;
+	display:inline-block;
+}
+.infoChannelStatus{
+	width:14px;
+	height:18px;
+	border-radius:100%;
+	background:#00ff00;
+	box-shadow: #000 0px 0px 1px 0px, #6eb300 -2px -4px 12px 2px inset, 0px 0px 0px 0px #6eb300;
+	margin:5px;
+	/*display:inline-block;
+	*/-webkit-transition-property: all; /* Safari */
+    -webkit-transition-duration: 0.15s; /* Safari */
+	-webkit-transition-timing-function: ease;
+	transition-property: all;
+    transition-duration: 0.15s;
+	transition-timing-function: ease;
+}
+/*.infoChannelStatus:hover{
+	box-shadow: 1px 1px 3px 1px #666;
+}*/
+.infoHead{
+	font-weight:bold;
+	clear:left;
+	margin-right:5px;
+}
+.channelInfo div{
+	padding:2px 5px;
+}
+#channelInfoHoverDiv{
+	display:none;
+	position:fixed;
+	background:#fff;
+	padding:2px;
+	z-index:100;
+	box-shadow: 1px 1px 5px 1px #ccc;
+	width: 800px;
+	height:350px;
+	-webkit-transition-property: all; /* Safari */
+    -webkit-transition-duration: 0.3s; /* Safari */
+	-webkit-transition-timing-function: ease;
+	transition-property: all;
+    transition-duration: 0.3s;
+	transition-timing-function: ease;
+	border: 1px solid #ddd;
+	border-radius: 0px 5px 5px 5px;
+	overflow:hidden;
+	min-height:200px;
+	max-height:350px;
+}
+#channelInfoHoverDiv table td{
+	border-bottom:1px solid #eee;
+	border-left:1px solid #eee;
+	vertical-align: top;
+}
+#channelInfoHoverDiv table{
+	border:1px solid #444;
+	margin-top: 10px;
+}
+#channelInfoHoverDiv img{
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+.chInfo{
+	font-size:16px;
+/*	font-weight:bold;*/
+}
+.chInfo > span{
+  color: #666;
+
+  font-size: 12px;
+}
+.bouqInfo{
+	font-size:0.8em;
+}
+.chInfo,.bouqInfo{
+	margin:2px 2px;
+	text-align:center;
+}
+div#modalErrorInfo {
+  display:none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0;
+  margin: 0px;
+  background: #666;
+  opacity: 0;
+}
+#channelInfoHoverDiv th{
+	font-size:11px;
+	text-align:center;
+}
+#channelInfoHoverDiv thead tr:nth-child(2) th{
+	border: 1px solid #eee;
+	background-color: #d4d4d4;
+}
+.ErrorInfoHeading{
+	text-align: center;
+	overflow: hidden;
+	padding: 5px;
+	border-bottom: 1px solid rgba(200,200,200,0.7);
+}
+.infoChannelAudio{
+	position:absolute;
+	width:24px !important;
+	height:24px !important;
+	margin-left:160px;
+	margin-top:-60px;
+	box-shadow:none;
+	opacity:0.7;
+	z-index:10;
+}
+.infoChannelAudio img{
+	width:24px !important;
+	height:24px !important;
+	border-radius: 100% !important;
+}
+
+.channelContainer::before{
+	content:'NO PREVIEW';
+}
+.inactiveChannelStatus.channelContainer::before{
+	content:'OFF' !important;
+}
+.inactiveChannelStatus .infoChannelStatus.present{
+	background: #ccc;
+	box-shadow: #000 0px 0px 1px 0px, #aaa -2px -4px 12px 2px inset, 0px 0px 0px 0px #eee;
+}
+.inactiveChannelStatus .infoChannelStatus.past{
+	color: #000 !important;
+}
+.inactiveChannelStatus .infoChannelStatus{
+/* 	cursor: no-drop !important; */
+}
+.channelContainer::before{
+    position: absolute;
+	width: 210px;
+	font-weight: bold;
+	color: #a0a0a0;
+	font-size: 15px;
+	margin-top: 80px;
+	display: table;
+	z-index: 1;
+	text-align: center;
+}
+.tnimage{
+  position: relative;
+  z-index:10;
+}
+.infoChannelStatus.past {
+  background: inherit;
+  width: 60px !important;
+  height: 12px !important;
+  border-radius: 0px;
+  vertical-align: top;
+  margin-top: 32px;
+  box-shadow: none;
+  margin-left: 0px;
+  position: relative;
+  font-size: 0.9em;
+  float:left;
+}
+
+.pastError{
+	float:left;
+	margin-top:7px;
+	text-decoration:underline;
+}
+.statusIcon{
+/*	margin:auto;
+	width:50%;*/
+}
+.updateTimeContainer{
+	color:#666;
+	position:absolute;
+	font-size:0.9em;
+	padding: 0px 5px !important;
+	margin-left:90px;
+}
+.ErrorInfoContent{
+	overflow: auto;
+	height: 90%;
+}
+.ErrorInfoContent th:first-child, .ErrorInfoContent td:first-child{
+	width:100px !important;
+}
+.ErrorInfoContent th:nth-child(2), .ErrorInfoContent td:nth-child(2){
+	width:180px !important;
+}
+.ErrorInfoContent th:nth-child(3), .ErrorInfoContent td:nth-child(3){
+	width:160px !important;
+}
+.ErrorInfoContent th:nth-child(4), .ErrorInfoContent td:nth-child(4){
+	width:75px !important;
+}
+.ErrorInfoContent th:nth-child(5), .ErrorInfoContent td:nth-child(5){
+	/* width:350px !important; */
+	word-break: break-word;
+}
+
+.errorClass{
+	background-color: #ff0000 !important;
+	box-shadow: #000 0px 0px 1px 0px, #b30600 -2px -4px 12px 2px inset, 0px 0px 0px 0px #b30600 !important;
+}
+.infoChannelStatus.past.errorClass {
+  color: #ff0000 !important;
+  background: inherit !important;
+  box-shadow: none !important;
+}

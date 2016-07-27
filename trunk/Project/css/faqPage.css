@@ -1,0 +1,42 @@
+@CHARSET "UTF-8";
+.container_FAQ{
+	width: 95%;
+	height: 90%;
+	margin-top:20px;
+}
+
+.ques_FAQ{
+	background-color: #eee;
+	margin-top: 5px;
+	padding:5px; 
+}
+
+.ques_FAQ img{
+	margin-top:3px; 
+}
+
+.ans_FAQ{
+	display: none;
+}
+
+img[state]{
+	width: 10px;
+	height: 10px;
+	cursor: pointer;
+	float:left;
+}
+
+img[state='expanded']{
+	display: none;
+}
+
+.ques_text, .ans_text{
+	margin-left: 15px;
+	font-family: Arial;
+	font-size: 14px;
+}
+
+.ans_FAQ{
+	margin-top : 5px;
+	padding:5px; 
+}
