@@ -1,0 +1,230 @@
+<html>
+<head>
+<link rel="stylesheet" href="./NovaNode.css" type="text/css">
+</head>
+<body>
+<div class='container_div menu_container'>
+	<div class='item_container_div f_l'>
+		<div class='menu_item'>
+			<input type='button' value='Add' onclick='openNewItemForm(this)' openDivID='bouquet_add_form'/>
+		</div>
+	</div>
+	<div class='item_container_div f_l'>
+		<div class='menu_item'>
+			<input type='button' class='menu_item_disable c_p' value='Edit' disabled="disabled" onclick='editBouquet()'/>
+		</div>
+	</div>
+	<div class='item_container_div f_l'>
+		<div class='menu_item'>
+			<input type='button' class='menu_item_disable c_p' value='Apply' disabled="disabled" onclick='saveBouquet()'/>
+		</div>
+	</div>
+	<div class='item_container_div f_l'>
+		<div class='menu_item'>
+			<input type='button' class='menu_item_disable c_p' value='Remove' disabled="disabled" onclick='deleteItem(this)'/>
+		</div>
+	</div>
+</div>
+<hr />
+<div class='container_div'>
+	<div>
+		<table class='nova_table main_list_table' id='bouquetListTable'>
+			<thead>
+				<tr>
+					<td>
+						<div class='list_head_name'></div>
+					</td>
+					<td>
+						<div class='list_head_name'>Bouquet Names</div>
+					</td>
+					<td>
+						<div class='list_head_name'>Description</div>
+					</td>
+					<td>
+						<div class='list_head_name'>Assigned User</div>
+					</td>
+				</tr>
+			</thead>
+			<tr>
+				<td>
+					<input type="radio" name="bouquet_list_items_radio">
+				</td>
+				<td>
+					<div class='list_item'>Bouquet 1</div>
+				</td>
+				<td>
+					<div class='list_item'>Description 1</div>
+				</td>
+				<td>
+					<div class='list_item'>User 1</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="radio" name="bouquet_list_items_radio">
+				</td>
+				<td>
+					<div class='list_item'>Bouquet 2</div>
+				</td>
+				<td>
+					<div class='list_item'>Description 2</div>
+				</td>
+				<td>
+					<div class='list_item'>User 2</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="radio" name="bouquet_list_items_radio">
+				</td>
+				<td>
+					<div class='list_item'>Bouquet 3</div>
+				</td>
+				<td>
+					<div class='list_item'>Description 3</div>
+				</td>
+				<td>
+					<div class='list_item'>User 3</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+<div class='container_div sub_list_container'>
+	<div class='f_l'>
+		<div class='list_table_container'>
+			<table class='added_list_table'>
+				<caption>Nodes added to <span class='selected_item_span'>Bouquet 1</span></caption>
+				<thead>
+					<tr>
+						<td>
+							<div class='list_head_name'></div>
+						</td>
+						<td>
+							<div class='list_head_name'>node Names</div>
+						</td>
+						<td>
+							<div class='list_head_name'>Description</div>
+						</td>
+					</tr>
+				</thead>
+				<tr>
+					<td>
+						<input type="radio" name="node_added_list_items_radio">
+					</td>
+					<td>
+						<div class='list_item'>node 1</div>
+					</td>
+					<td>
+						<div class='list_item'>Description 1 Test It To a long string</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="radio" name="node_added_list_items_radio">
+					</td>
+					<td>
+						<div class='list_item'>node 2</div>
+					</td>
+					<td>
+						<div class='list_item'>Description 2</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="radio" name="node_added_list_items_radio">
+					</td>
+					<td>
+						<div class='list_item'>node 3</div>
+					</td>
+					<td>
+						<div class='list_item'>Description 3</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class ='swap_button_container' >
+		<div class ='item_container_div f_l'>
+			<input type='button' value='&gt;&gt;' class='remove_disable' disabled='disabled' onclick='removeListItem(this)' />
+		</div>
+		<div class ='item_container_div f_l'>
+			<input type='button' value='&lt;&lt;' class='add_disable' disabled='disabled' onclick='addListItem(this)' />
+		</div>
+	</div>
+	<div class='f_l'>
+		<div class='list_table_container'>
+			<table class='other_list_table'>
+				<caption>Other nodes for <span class='selected_item_span'>Bouquet 1</span></caption>
+				<thead>
+					<tr>
+						<td>
+							<div class='list_head_name'></div>
+						</td>
+						<td>
+							<div class='list_head_name'>Node Names</div>
+						</td>
+						<td>
+							<div class='list_head_name'>Description</div>
+						</td>
+					</tr>
+				</thead>
+				<tr>
+					<td>
+						<input type="radio" name="node_other_list_items_radio">
+					</td>
+					<td>
+						<div class='list_item'>Other node 1</div>
+					</td>
+					<td>
+						<div class='list_item'>Other Description 1</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="radio" name="node_other_list_items_radio">
+					</td>
+					<td>
+						<div class='list_item'>Other node 2</div>
+					</td>
+					<td>
+						<div class='list_item'>Other Description 2</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="radio" name="node_other_list_items_radio">
+					</td>
+					<td>
+						<div class='list_item'>Other node 3</div>
+					</td>
+					<td>
+						<div class='list_item'>Other Description 3</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+<div id='bouquet_add_form' class='modal_div container_div'>
+	<form>
+		<div class='new_bouquet_item_container'>
+			<label for="new_bouquet_input_name" >Bouquet Name</label>
+			<input type='text' name='new_bouquet_input_name' />
+		</div>
+		<br />
+		<div class='new_bouquet_item_container'>
+			<label for="new_bouquet_input_description" style='vertical-align:top'>Description</label>
+			<textarea name='new_bouquet_input_description' ></textarea>
+		</div>
+		<br />
+		<div class='new_bouquet_item_container' align='center'>
+			<input type='button' class='c_p' value='Add' onclick='addBouquet()'/>
+			<input type='button' class='c_p' value='Cancel' onclick='cancelNewBouquet()'/>
+		</div>
+	</form>
+</div>
+<script type="text/javascript" src="./jquery.js"></script>
+<script type="text/javascript" src="./NovaNode.js"></script>
+</body>
+</html>

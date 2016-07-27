@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<?php
+	global $ProjectName; 
+	global $InvoiceNum;
+	global $InvoiceDate;
+	global $UserName;
+	global $UserAddress;
+	global $UserCompany;
+	global $UserTelephone;
+	global $UserCity;
+	global $UserZip;
+	global $UserEmail;
+	global $UserCountry;
+	global $ItemAmount;
+	global $TotalAmount;
+	global $PurchaseDate;
+	global $PurchaseMode;
+	global $TransactionID;
+?>
+	<DIV style="width:90%;margin:auto">
+    	<DIV style="float:left">
+    		<img src="../Common/images/VT_Logo.PNG" />
+        </DIV>    
+    	<DIV style="float:RIGHT" align="right">
+    		Venera Technologies Inc.
+            <br />
+    		806 Irving Drive, Burbank
+            <br />
+    		CA 91504, USA
+            <br />
+    		Tel: +1-831-293-3333
+            <br />
+    		<a>sales@veneratech.com</a>
+            <br />
+            
+        </DIV>    
+    	<DIV style="float:left;WIDTH:100%">
+            <hr />
+            <div style="float:left">
+                INVOICE NO. <?php echo $InvoiceNum; ?>
+            </div>
+            <div style="float:RIGHT">
+                 Date: <?php echo $InvoiceDate; ?>
+            </div>
+        </DIV>    
+    	<DIV style="float:left;padding:5px;MARGIN-TOP:30PX;WIDTH:100%;BORDER :1PX SOLID BLACK;height:150px">
+        	Bill to:
+                <br />
+            <div style="float:left;margin-left:15px;WIDTH:100%">
+            	<table cellpadding="5" width="90%">
+                	<tr>
+                    	<td width="5%" align="right">
+                        	Attention: 
+                        </td>
+                    	<td width="30%" style="border-bottom:1px solid #888;">
+	                        	<?php echo $UserName; ?>
+<!--                        	<u>
+	                        	Gary Holmes
+                            </u>    
+-->                        </td>
+                    	<td width="5%" align="right">
+                        	Address: 
+                        </td>
+                    	<td width="30%" style="border-bottom:1px solid #888;">
+                        	<?php echo $UserAddress; ?>
+                        </td>
+                    </tr>
+                	<tr>
+                    	<td width="5%" align="right">
+                        	Company: 
+                        </td>
+                    	<td width="30%" style="border-bottom:1px solid #888;">
+	                        	<?php echo $UserCompany; ?>
+<!--                        	<u>
+	                        	Gary Holmes
+                            </u>    
+-->                        </td>
+                    	<td width="5%" align="right">&nbsp;
+                        	 
+                        </td>
+                    	<td width="30%" style="border-bottom:1px solid #888;">
+                        	
+                        </td>
+                    </tr>
+                	<tr>
+                    	<td width="5%" align="right">
+                        	Telephone: 
+                        </td>
+                    	<td width="30%" style="border-bottom:1px solid #888;">
+	                        	<?php echo $UserTelephone; ?>
+<!--                        	<u>
+	                        	Gary Holmes
+                            </u>    
+-->                        </td>
+                    	<td width="5%" align="right">
+                        	City/Zip
+                        </td>
+                    	<td width="30%" style="border-bottom:1px solid #888;">
+                        	<?php echo $UserCity.'/'.$UserZip; ?>
+                        </td>
+                    </tr>
+                	<tr>
+                    	<td width="5%" align="right">
+                        	Email 
+                        </td>
+                    	<td width="30%" style="border-bottom:1px solid #888;">
+	                        	<?php echo $UserEmail; ?>
+<!--                        	<u>
+	                        	Gary Holmes
+                            </u>    
+-->                        </td>
+                    	<td width="5%" align="right">
+                        	Country: 
+                        </td>
+                    	<td width="30%" style="border-bottom:1px solid #888;">
+                        	<?php echo $UserCountry; ?>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </DIV>    
+
+     	<DIV style="float:left;padding:5px;MARGIN-TOP:30PX;WIDTH:100%;BORDER :1PX SOLID BLACK;height:auto">
+            <div style="float:left;WIDTH:100%">
+	            <table cellpadding="5" width="100%" border="1px solid #888" cellspacing="0">
+	                <tr style="background-color:#EEB080">
+	                    <td align="left" width="80%">
+	                        <b>Item</b>
+	                    </td>
+	                    <td align="left">
+	                        <b>Amount (USD)</b>
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <td align="left">
+	                        <?php echo $ProjectName; ?> credits<br/>
+	Mode: <?php echo $PurchaseMode; ?>, Purchased on: <?php echo $PurchaseDate; ?>, Transaction Id: <?php echo $TransactionID; ?>
+	                    </td>
+	                    <td width="30%" style="border-bottom:1px solid #888;">
+	                            <?php echo $ItemAmount; ?>
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <td align="right">
+	                        Total &nbsp;&nbsp;
+	                    </td>
+	                    <td align="left">
+	                            <?php echo $TotalAmount; ?>
+	                    </td>
+	                </tr>
+	            </table>
+	        </div>
+	    </DIV>    
+        <div align="right" style="bottom:0;float:right;margin-top:40px">Thank you for your business</div>
+    </DIV>
+</body>
+</html>
