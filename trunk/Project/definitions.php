@@ -5,6 +5,7 @@ define('SUPERUSER', 0);
 define('ADMIN', 1);
 define('NORMAL', 2);
 define('SALES', 3);
+define('OPERATOR', 4);
 
 //User Status
 define('USER_UNVERIFIED', 1); 
