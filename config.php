@@ -1,3 +1,3 @@
 <?php 
-    define("PROJECT","Project");
+    define("PROJECT","web");
 ?>
