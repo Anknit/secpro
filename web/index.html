@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-ng-app="mainapp">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Secpro</title>
@@ -32,7 +32,7 @@
     </head> 
     <body data-spy="scroll">
         <header id="top" class="header navbar-fixed-top">  
-            <div class="container">            
+            <div class="container" data-ng-controller="headerController">            
                 <h1 class="logo pull-left">
                     <a class="scrollto" href="#">
                         <img id="logo-image" class="logo-image" src="./web/images/logo/logo.png" alt="Logo">
@@ -53,13 +53,75 @@
                             <li class="nav-item sr-only"><a class="scrollto" href="./#promo">Home</a></li>
                             <li class="nav-item"><a class="scrollto" href="./#features">Features</a></li>
                             <li class="nav-item"><a class="scrollto" href="./#how">How it works</a></li>
+<!--
                             <li class="nav-item"><a class="scrollto" href="./#faq">FAQ</a></li>
                             <li class="nav-item"><a class="scrollto" href="./#story">Story</a></li>
+-->
                             <li class="nav-item"><a class="scrollto" href="./#pricing">Pricing</a></li>
+<!--
                             <li class="nav-item last"><a class="scrollto" href="./#contact">Contact</a></li>
+-->
+                            <li class="nav-item"><a role="button" data-ng-click="openModal(1)">Login</a></li>
+                            <li class="nav-item last"><a role="button" data-ng-click="openModal(2)">Signup</a></li>
                         </ul>
                     </div>
                 </nav>
+                <div class="modal" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-ng-click="close()"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" data-ng-class="{'hide': type==1 }">Sign up</h4>
+                                <h4 class="modal-title" data-ng-class="{'hide': type==2 }">Login</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="body-container" data-ng-class="{'hide': type==1 }">
+                                    <form class="form-horizontal">
+                                        <div class="form-group">
+                                            <div class="col-md-3 text-right">
+                                                <label class="control-label">Email</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <input type="email" class="form-control" name="signupmail" placeholder="Email address" maxlength="30" data-ng-model="signupmail" required />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="button" class="btn btn-success center-block" data-ng-click="signupUser()">Sign up</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="body-container" data-ng-class="{'hide': type==2 }">
+                                    <form class="form-horizontal">
+                                        <div class="form-group">
+                                            <div class="col-md-3 text-right">
+                                                <label class="control-label">Email</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <input type="email" class="form-control" name="loginmail" placeholder="Email address" maxlength="30" data-ng-model="loginmail" required />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-3 text-right">
+                                                <label class="control-label">Password</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <input type="password" class="form-control" name="loginpswd" placeholder="Enter your password" maxlength="25" data-ng-model="loginpswd" required />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="button" class="btn btn-success center-block" data-ng-click="loginUser()">Login</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <p class="text-info footer-text" data-ng-class="{'hide': type==1 }">Already have an account ? <a href="" data-ng-click="type=1">Login</a></p>
+                                <p class="text-info footer-text" data-ng-class="{'hide': type==2 }">New User ? <a href="" data-ng-click="type=2">Signup</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </header>
 
@@ -566,19 +628,22 @@
         </div><!--//modal-->
 
         <!-- Javascript -->          
-        <script type="text/javascript" src="./web/plugins/jquery-1.12.3.min.js"></script>
-        <script type="text/javascript" src="./web/js/isMobile.min.js"></script>
-        <script type="text/javascript" src="./web/plugins/jquery.easing.1.3.js"></script>   
-        <script type="text/javascript" src="./web/plugins/bootstrap.min.js"></script>     
-        <script type="text/javascript" src="./web/plugins/jquery.inview.min.js"></script>
-        <script type="text/javascript" src="./web/plugins/jquery.fitvids.js"></script>
-        <script type="text/javascript" src="./web/plugins/jquery.scrollTo.min.js"></script>    
-        <script type="text/javascript" src="./web/plugins/jquery.placeholder.js"></script>
-        <script type="text/javascript" src="./web/plugins/jquery.flexslider-min.js"></script>
-        <script type="text/javascript" src="./web/plugins/jquery.matchHeight-min.js"></script>
-        <script type="text/javascript" src="./web/js/main.js"></script>
+        <script type="application/javascript" src="./web/plugins/jquery-1.12.3.min.js"></script>
+        <script type="application/javascript" src="./web/js/isMobile.min.js"></script>
+        <script type="application/javascript" src="./web/plugins/jquery.easing.1.3.js"></script>   
+        <script type="application/javascript" src="./web/plugins/bootstrap.min.js"></script>     
+        <script type="application/javascript" src="./web/plugins/jquery.inview.min.js"></script>
+        <script type="application/javascript" src="./web/plugins/jquery.fitvids.js"></script>
+        <script type="application/javascript" src="./web/plugins/jquery.scrollTo.min.js"></script>    
+        <script type="application/javascript" src="./web/plugins/jquery.placeholder.js"></script>
+        <script type="application/javascript" src="./web/plugins/jquery.flexslider-min.js"></script>
+        <script type="application/javascript" src="./web/plugins/jquery.matchHeight-min.js"></script>
+        <script type="application/javascript" src="./web/js/main.js"></script>
+        <script type="application/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="application/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+        <script type="application/javascript" src="./web/js/mainapp.js"></script>
         <!--[if !IE]>--> 
-        <script type="text/javascript" src="./web/js/animations.js"></script> 
+        <script type="application/javascript" src="./web/js/animations.js"></script> 
         <!--<![endif]-->         
     </body>
 </html>
