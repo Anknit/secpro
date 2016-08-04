@@ -15,6 +15,7 @@
         <link href="./web/css/font2.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./web/css/bootstrap.min.css">
         <link rel="stylesheet" href="./web/css/styles.css">
+        <link rel="stylesheet" href="./web/css/app.css">
     </head> 
     <body>
         <header class="header navbar-fixed-top">  
