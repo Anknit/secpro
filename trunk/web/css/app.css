@@ -1,0 +1,9 @@
+img#main-stream-image {
+    width: 256px;
+    margin: auto;
+    display: block;
+}
+div#data-store {
+    max-height: 350px;
+    overflow: auto;
+}

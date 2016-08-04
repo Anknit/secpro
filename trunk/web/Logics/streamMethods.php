@@ -13,7 +13,7 @@ class streamDataClass {
     public function getDeviceImage () {
         $imageUrl = $this->getImageUrl();
         $imageComments = $this->getImageComments();
-        return array('error'=> 0, 'data' => array('url' => $imageUrl, 'comments' => $imageComments));
+        return array('error'=> 0, 'data' => array('url' => $imageUrl, 'comments' => $imageComments, 'timestamp' => microtime(true)));
     }
     
     private function getImageUrl () {
