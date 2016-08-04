@@ -11,9 +11,14 @@ class userClass {
     public function validateLogin ($email, $password) {
         $userRow = $this->checkUserExist($email);
         if($userRow && count($userRow) == 1){
-            if(md5($password) == $userRow[0]['password']){
-                unset($userRow[0]['password']);
-                $this->data = $userRow[0];
+            if($userRow[0]['userstatus'] == ACTIVE_USER) {
+                if(md5($password) == $userRow[0]['password']){
+                    unset($userRow[0]['password']);
+                    $this->data = $userRow[0];
+                }
+                else{
+                    $this->error = 3;
+                }
             }
             else{
                 $this->error = 2;

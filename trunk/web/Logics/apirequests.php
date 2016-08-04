@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__.'./../require.php';
 require_once __DIR__.'/userMethods.php';
+require_once __DIR__.'/streamMethods.php';
 $status = false;
 $data = array();
 $error=0;
@@ -11,8 +12,17 @@ if(isset($_REQUEST['requesttype'])) {
             if(isset($_REQUEST['email']) && trim($_REQUEST['email']) != '' && isset($_REQUEST['password']) && trim($_REQUEST['password']) != ''){
                 $requestResponse = (new userClass)->validateLogin($_REQUEST['email'],$_REQUEST['password']);
                 if(is_array($requestResponse) && $requestResponse['error'] == 0){
-                    $_SESSION['uid'] = $requestResponse['data']['id'];
-                    $_SESSION['uname'] = $requestResponse['data']['username'];
+                    $_SESSION['userdata'] = array();
+                    $_SESSION['userdata']['uid'] = $requestResponse['data']['id'];
+                    $_SESSION['userdata']['uname'] = $requestResponse['data']['username'];
+                    $_SESSION['userdata']['ustatus'] = $requestResponse['data']['userstatus'];
+                    $_SESSION['userdata']['utype'] = $requestResponse['data']['usertype'];
+                    $_SESSION['userdata']['fname'] = $requestResponse['data']['firstname'];
+                    $_SESSION['userdata']['lname'] = $requestResponse['data']['lastname'];
+                    $_SESSION['userdata']['plink'] = $requestResponse['data']['profilelink'];
+                }
+                else {
+                    $error = $requestResponse['error'];
                 }
             } else{
                 $error = 'Email or password cannot be blank';
@@ -26,15 +36,18 @@ if(isset($_REQUEST['requesttype'])) {
             }
             break;
         case 'logout':
-            if(isset($_SESSION['uid'])) {
-                SM_CloseSession();
-                $requestResponse['error']  = 0;
-                $requestResponse['data'] = array();
-            }
+            SM_CloseSession();
+            $requestResponse = array();
+            $requestResponse['error']  = 0;
+            $requestResponse['data'] = array();
+            break;
+        case 'imagestream':
+            $requestResponse = (new streamDataClass)->getDeviceImage();
+            break;
         default:
             break;
     }
-    if(!$requestResponse['error']){
+    if($requestResponse['error'] == 0){
         $status = true;
         $data = $requestResponse['data'];
     }
