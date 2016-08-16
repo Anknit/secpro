@@ -1,0 +1,20 @@
+<ion-view title="Home" id="page1">
+    <ion-content padding="true" class="has-header">
+        <div id="home-top">
+            <div class="image-area-home">
+                <img data-ng-src="{{previewSrc}}" alt="Preview" width="100%" height="auto" />
+            </div>
+        </div>
+        <button id="home-button1" style="border-radius:10px 10px 10px 10px;" class=" button button-royal  button-block icon ion-upload " data-ng-click="manualCapture()">Upload</button>
+        <button id="home-button2" style="border-radius:10px 10px 10px 10px;" class=" button button-balanced  button-block icon ion-radio-waves " data-ng-click="autoModeCapture()">Start session</button>
+        <form id="home-form1" class="list ">
+            <label class="item item-input " id="home-textarea1">
+                <span class="input-label"></span><textarea placeholder="Comments"></textarea>
+            </label>
+            <div id="home-button-bar1" class=" button-bar ">
+                <button id="home-button4" class=" button button-balanced  button-block ">Ok</button>
+                <button id="home-button5" class=" button button-stable  button-block ">Cancel</button>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>
