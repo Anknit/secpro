@@ -17,13 +17,13 @@
             window.alert('Deviceready');
         },
         autoModeCapture: function () {
-            this.autoModeId = window.setInterval(secpro.captureMedia, this.autoModeFreq);
+            secpro.autoModeId = window.setInterval(secpro.captureMedia, secpro.autoModeFreq);
         },
         manualModeCapture: function () {
-            this.captureMedia();
+            secpro.captureMedia();
         },
         stopAutoModeCapture: function () {
-            window.clearInterval(this.autoModeId);
+            window.clearInterval(secpro.autoModeId);
         },
         captureMedia: function () {
             navigator.device.capture.captureImage(
@@ -40,7 +40,6 @@
         setAutoModeFrequency: function () {},
         changeStreamingPrivacy: function () {},
         addComments: function () {}
-        
     };
     secpro.initialize();
 }());
