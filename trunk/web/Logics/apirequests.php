@@ -1,4 +1,5 @@
 <?php
+header('Access-Control-Allow-Origin: *');
 require_once __DIR__.'./../require.php';
 require_once __DIR__.'/userMethods.php';
 require_once __DIR__.'/streamMethods.php';
@@ -31,6 +32,16 @@ if(isset($_REQUEST['requesttype'])) {
         case 'signup':
             if(isset($_REQUEST['email']) && trim($_REQUEST['email']) != ''){
                 $requestResponse = (new userClass)->initiateSignup($_REQUEST['email']);
+                if($requestResponse['error'] == 0) {
+                    if(isset($_REQUEST['mobileNumber']) &&  trim($_REQUEST['mobileNumber']) != '') {
+                        // send OTP to mobile
+                    }
+                    else{
+                        // send verification link to email address
+                    }
+                } else{
+                    $error = $requestResponse['error'];
+                }
             } else {
                 $error = 'Email cannot be blank';
             }
