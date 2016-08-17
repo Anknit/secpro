@@ -1,13 +1,4 @@
 <?php
-/*
- * Author: Aditya 
- * date: 1-AUG-2014
- * Description: This module provides method to send e-mail.
- * Passing the Recipients and mail body as content of html body, the mail can be successfully sent if only the smtp settings exists for the system.
- */
-
-require_once 'OperateDB/DbMgrInterface.php';
-
 /*=====================================================SEND MAIL==============================================================*/
 /*
 * @access public
@@ -19,31 +10,42 @@ require_once 'OperateDB/DbMgrInterface.php';
 
 */
 
-function send_Email($recipients, $mailSubject = "", $MailBody = "", $additionalEmails	=	'',	$attachment	=	'')
+function send_Email( $recipients, $mailSubject = "", $MailBody = "", $additionalEmails	=	'',	$attachment	=	'',$config = '')
 {
-	$mailInit	=	new init_mail();
+	if(!is_array($config)){
+		$read_smtp_info = array (
+				'Fields'=> '*',
+				'Table'=> 'systemsettings'
+		);
+		$smtpDetails	=	DB_Read($read_smtp_info, 'ASSOC');
+		$config['smtpHostName']	=	$smtpDetails[0]['smtpHostName'];
+		$config['smtpPort']		=	$smtpDetails[0]['smtpPort'];
+		$config['smtpUsername']	=	$smtpDetails[0]['smtpUsername'];
+		$config['smtpPassword']	=	$smtpDetails[0]['smtpPassword'];
+		$config['sender']		=	$smtpDetails[0]['sender'];
+	}
+	
+	$mailInit	=	new init_mail($config);
+	$mailInit->set_Mail_Body($MailBody);
+	$mailInit->set_Mail_Subject($mailSubject);
 	return $mailInit->send_Mail($recipients, $mailSubject, $MailBody, $additionalEmails	=	'',	$attachment);
 }
 
 class init_mail {
 	private $sender, $headers, $default_sender	=	'Administrator', $smtp_Details =''; 
-
+	private $mailBody, $mailSubject;
+	
 	//Initialize the parameters required to send mail
-	public function init_mail()	
+	public function init_mail($config)	
 	{
-		$read_smtp_info = array (
-								'Fields'=> '*',
-								'Table'=> 'systemsettings'
-							);
-		$smtpDetails	=	DB_Read($read_smtp_info, 'ASSOC');
-		if(count($smtpDetails) > 0)
+		if(count($config) > 0)
 		{
 			//	$smtpDetails[0] refers to an array on whose index 0 will exist an associative array          smtpUsername
-			$this->smtp_Details['Host']		=	$smtpDetails[0]['smtpHostName'];
-			$this->smtp_Details['Port']		=	$smtpDetails[0]['smtpPort'];
-			$this->smtp_Details['User']		=	$smtpDetails[0]['smtpUsername'];
-			$this->smtp_Details['Pass']		=	$smtpDetails[0]['smtpPassword'];
-			$this->smtp_Details['sender']	=	$smtpDetails[0]['sender'];
+			$this->smtp_Details['Host']		=	$config['smtpHostName'];
+			$this->smtp_Details['Port']		=	$config['smtpPort'];
+			$this->smtp_Details['User']		=	$config['smtpUsername'];
+			$this->smtp_Details['Pass']		=	$config['smtpPassword'];
+			$this->smtp_Details['sender']	=	$config['sender'];
 		}
 	}
 	
@@ -80,6 +82,23 @@ class init_mail {
 		return $output;	
 	}
 	
+	public function set_Mail_Body($body) {
+		$this->mailBody = $body;
+	}
+	
+	public function get_Mail_Body() {
+		return $this->mailBody;
+	}
+	
+	public function set_Mail_Subject($subject) {
+		$this->mailSubject = $subject;
+	}
+	
+	public function get_Mail_Subject() {
+		return $this->mailSubject;
+	}
+
+	
 	public function send_Mail($recipients, $mailSubject, $MailBody, $additionalEmails	=	'', $attachment	=	'')
 	{
 		$cwd	=	getcwd();
@@ -101,6 +120,8 @@ class init_mail {
 			//Content of the email
 			$html	=	$this->get_Mail_Content($MailBody);
 
+//			error_reporting(0);
+			
 			$text = ''; 
 			$crlf = "\r\n";
 			$mime = new Mail_mime($crlf);
