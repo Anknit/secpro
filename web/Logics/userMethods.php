@@ -40,7 +40,7 @@ class userClass {
         else{
             $this->error = 1;
         }
-        return $this->error;
+        return array('error'=>$this->error,'data'=>$this->data);
     }
     private function createUser ($email) {
         $userId = DB_Insert(array(
