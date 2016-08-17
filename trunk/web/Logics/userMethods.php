@@ -35,6 +35,8 @@ class userClass {
             $createUser = $this->createUser($email);
             if(!$createUser) {
                 $this->error = 2;
+            } else{
+                $this->data = array('email'=>$email, 'userid' =>$createUser);
             }
         }
         else{
@@ -42,13 +44,24 @@ class userClass {
         }
         return array('error'=>$this->error,'data'=>$this->data);
     }
+    public function generateVerifyLink ($email, $userid) {
+        $secureLink = md5($email.$userid);
+        $storeLink = DB_Insert(array(
+            'Table' => 'verificationlinks',
+            'Fields'=> array(
+                'userId' => $userid,
+                'verificationLink' => $secureLink
+            )
+        ));
+        return $secureLink.$storeLink;
+    }
     private function createUser ($email) {
         $userId = DB_Insert(array(
             'Table' => 'userdata',
             'Fields'=> array(
                 'email' => $email,
                 'username' => $email,
-                'userstatus' => USER_UNVERIFIED,
+                'userstatus' => UNVERIFIED_USER,
                 'usertype' => NORMAL,
                 'logintype' => EMAIL,
                 'registeredon' => date("Y-m-d H:i:s")
