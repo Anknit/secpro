@@ -53,22 +53,6 @@ if(isset($_REQUEST['requesttype'])) {
                 $error = 'Email cannot be blank';
             }
             break;
-/*
-        case 'verify':
-            if(isset($_REQUEST['link']) && trim($_REQUEST['link']) != '') {
-                $verifyLink = trim($_REQUEST['link']);
-                if (strlen($verifyLink) > 32) {
-                    $secureLink = substr($verifyLink, 0, 32);
-                    $linkId = substr($verifyLink, 32);
-                    $linkUser = DB_Query('Select email');
-                }
-                header ('location: ./../../index.php?link='.trim($_REQUEST['link']));
-                exit();
-            } else {
-                header ('location: ./../../');
-                exit();
-            }
-*/
         case 'logout':
             SM_CloseSession();
             $requestResponse = array();
@@ -77,6 +61,22 @@ if(isset($_REQUEST['requesttype'])) {
             break;
         case 'imagestream':
             $requestResponse = (new streamDataClass)->getDeviceImage();
+            break;
+        case 'register':
+            if(isset($_REQUEST['email']) && trim($_REQUEST['email']) != '' && isset($_REQUEST['password']) && trim($_REQUEST['password']) != ''){
+                $requestResponse = (new userClass)->registerUser($_REQUEST['email'],$_REQUEST['password'],$_REQUEST['fname'],$_REQUEST['lname'],$_REQUEST['referrer'],$_REQUEST['lid']);
+                if(is_array($requestResponse) && $requestResponse['error'] == 0){
+                    $mailResponse = (new mailAccess)->sendWelcomeMail(trim($_REQUEST['email']));
+                    if($mailResponse['error'] != 0) {
+                        $error = 'Mail not sent';
+                    }
+                }
+                else {
+                    $error = $requestResponse['error'];
+                }
+            } else{
+                $error = 'Email or password cannot be blank';
+            }
             break;
         default:
             break;

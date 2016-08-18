@@ -55,6 +55,42 @@ class userClass {
         ));
         return $secureLink.$storeLink;
     }
+    public function registerUser ($email, $password, $fname, $lname, $reflink, $linkid) {
+        $userId = DB_Read(array(
+            'Table'=>'verificationlinks',
+            'Fields'=>'userId',
+            'clause'=>'linkId='.$linkid.' and verificationlink = "'.$reflink.'"'
+        ));
+        if($userId && count($userId) == 1) {
+            $userId = $userId[0]['userId'];
+            $updateUser = Db_Update(array(
+                'Table' => 'userdata',
+                'Fields'=> array(
+                    'userstatus' => ACTIVE_USER,
+                    'password' => md5($password),
+                    'firstname' => $fname,
+                    'lastname' => $lname,
+                    'registeredusing' => REGISTER_BY_MAIL
+                ),
+                'clause' => 'id='.$userId.' and email = "'.$email.'"'
+            ));
+            if($updateUser) {
+                $deleteVerificationLink = DB_Delete(array(
+                    'Table' => 'verificationlinks',
+                    'clause' => 'linkId='.$linkid
+                ));
+                if(!$deleteVerificationLink) {
+                    $this->error = 3;
+                }
+            } else {
+                $this->error = 2;
+            }
+        } else {
+            $this->error = 1;
+        }
+        return array('error'=>$this->error,'data'=>$this->data);
+    }
+    
     private function createUser ($email) {
         $userId = DB_Insert(array(
             'Table' => 'userdata',
