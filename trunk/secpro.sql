@@ -1,27 +1,18 @@
--- MySQL dump 10.13  Distrib 5.7.13, for Linux (x86_64)
---
--- Host: 127.0.0.1    Database: secpro
--- ------------------------------------------------------
--- Server version	5.7.13-0ubuntu0.16.04.2
+/*
+SQLyog Community Edition- MySQL GUI v6.15
+MySQL - 5.6.17 : Database - secpro
+*********************************************************************
+*/
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+
+/*!40101 SET SQL_MODE=''*/;
+
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
---
--- Table structure for table `appsettings`
---
+/*Table structure for table `appsettings` */
 
-DROP TABLE IF EXISTS `appsettings`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `appsettings` (
   `userid` int(11) DEFAULT NULL,
   `uploadmode` int(11) DEFAULT NULL,
@@ -30,24 +21,9 @@ CREATE TABLE `appsettings` (
   `gpsfrequency` int(11) DEFAULT NULL,
   UNIQUE KEY `userid_UNIQUE` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `appsettings`
---
+/*Table structure for table `groupdata` */
 
-LOCK TABLES `appsettings` WRITE;
-/*!40000 ALTER TABLE `appsettings` DISABLE KEYS */;
-/*!40000 ALTER TABLE `appsettings` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `groupdata`
---
-
-DROP TABLE IF EXISTS `groupdata`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `groupdata` (
   `groupid` int(11) NOT NULL AUTO_INCREMENT,
   `accmgrid` int(11) DEFAULT NULL,
@@ -61,46 +37,16 @@ CREATE TABLE `groupdata` (
   PRIMARY KEY (`groupid`),
   UNIQUE KEY `groupid_UNIQUE` (`groupid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `groupdata`
---
+/*Table structure for table `groupusersmapping` */
 
-LOCK TABLES `groupdata` WRITE;
-/*!40000 ALTER TABLE `groupdata` DISABLE KEYS */;
-/*!40000 ALTER TABLE `groupdata` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `groupusersmapping`
---
-
-DROP TABLE IF EXISTS `groupusersmapping`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `groupusersmapping` (
   `groupid` int(11) DEFAULT NULL,
   `userid` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `groupusersmapping`
---
+/*Table structure for table `sessiondata` */
 
-LOCK TABLES `groupusersmapping` WRITE;
-/*!40000 ALTER TABLE `groupusersmapping` DISABLE KEYS */;
-/*!40000 ALTER TABLE `groupusersmapping` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `sessiondata`
---
-
-DROP TABLE IF EXISTS `sessiondata`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sessiondata` (
   `sessionid` int(11) NOT NULL AUTO_INCREMENT,
   `userid` int(11) DEFAULT NULL,
@@ -112,24 +58,9 @@ CREATE TABLE `sessiondata` (
   PRIMARY KEY (`sessionid`),
   UNIQUE KEY `sessionid_UNIQUE` (`sessionid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `sessiondata`
---
+/*Table structure for table `userdata` */
 
-LOCK TABLES `sessiondata` WRITE;
-/*!40000 ALTER TABLE `sessiondata` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sessiondata` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `userdata`
---
-
-DROP TABLE IF EXISTS `userdata`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `userdata` (
   `id` int(100) NOT NULL AUTO_INCREMENT COMMENT 'unique identifier',
   `email` varchar(50) NOT NULL COMMENT 'email address',
@@ -145,26 +76,16 @@ CREATE TABLE `userdata` (
   `phone` varchar(20) DEFAULT NULL,
   `registeredusing` int(5) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `userdata`
---
+/*Table structure for table `verificationlinks` */
 
-LOCK TABLES `userdata` WRITE;
-/*!40000 ALTER TABLE `userdata` DISABLE KEYS */;
-INSERT INTO `userdata` VALUES (4,'ankit.agrawal@veneratech.com','ankit.agrawal@veneratech.com','0192023a7bbd73250516f069df18b500',1,2,1,'2016-07-26 16:49:43',NULL,NULL,NULL,NULL,NULL);
-/*!40000 ALTER TABLE `userdata` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+CREATE TABLE `verificationlinks` (
+  `linkId` int(11) NOT NULL AUTO_INCREMENT,
+  `userId` int(11) DEFAULT NULL,
+  `verificationLink` varchar(60) DEFAULT NULL,
+  PRIMARY KEY (`linkId`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2016-08-03 23:43:01

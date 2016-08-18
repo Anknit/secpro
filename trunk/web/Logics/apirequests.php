@@ -33,21 +33,33 @@ if(isset($_REQUEST['requesttype'])) {
             break;
         case 'signup':
             if(isset($_REQUEST['email']) && trim($_REQUEST['email']) != ''){
-                $requestResponse = (new userClass)->initiateSignup(trim($_REQUEST['email']));
-                if($requestResponse['error'] == 0) {
-                    if(isset($_REQUEST['mobileNumber']) &&  trim($_REQUEST['mobileNumber']) != '') {
-                        // send OTP to mobile
+                if(isset($_REQUEST['mobileNumber']) &&  trim($_REQUEST['mobileNumber']) != '') {
+                    $requestResponse = (new userClass)->initiateSignup(trim($_REQUEST['email']),trim($_REQUEST['firstname']),trim($_REQUEST['lastname']),trim($_REQUEST['password']),trim($_REQUEST['mobileNumber']));
+                    if($requestResponse['error'] == 0) {
+                        $generateOTP = '1234';              // Code for generating OTP //
+                        if($generateOTP) {
+                             //  code for sending OTP
+                            $requestResponse = array('error'=>0,'data'=>array());
+                            if($requestResponse['error'] != 0) {
+                                $error = 'OTP not sent';
+                            }
+                        } else{
+                            $error = 'OTP not generated';
+                        }
+                    } else{
+                        $error = $requestResponse['error'];
                     }
-                    else{
-                        // send verification link to email address
+                } else{
+                    $requestResponse = (new userClass)->initiateSignup(trim($_REQUEST['email']));
+                    if($requestResponse['error'] == 0) {
                         $verifyLink = (new userClass)->generateVerifyLink($requestResponse['data']['email'],$requestResponse['data']['userid']);
                         $requestResponse = (new mailAccess)->sendVerificationLink($requestResponse['data']['email'],$verifyLink);
                         if($requestResponse['error'] != 0) {
                             $error = 'Mail not sent';
                         }
+                    } else{
+                        $error = $requestResponse['error'];
                     }
-                } else{
-                    $error = $requestResponse['error'];
                 }
             } else {
                 $error = 'Email cannot be blank';

@@ -24,37 +24,30 @@ function onSignUp() {
         alert("Password length cannot exceed 20 characters");
         return false;
 	}
-	var data = {ClientId:clientId};
-	data.firstName = firstname;
-	data.lastName = lastname;
-	data.email = username;
-	data.password = passwd;
-	data.mobileNumber = '+91'+mobilenum;
-
-	var data1 = JSON.stringify(data);
+	var data = 'firstname='+firstname+'&lastname='+lastname+'&email='+username+'&password='+passwd+'&mobileNumber=+91'+mobilenum;
 	var http = new XMLHttpRequest();
 	http.open("POST",apiServiceBase+'signup',true);
-	http.setRequestHeader("Content-Type","application/json");
+	http.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 	http.onreadystatechange=function(){
 		if(http.readyState == 4){
             if(http.status==200){
-                localStorage.setItem("username",username);
-                localStorage.setItem("passwd",passwd);
-                localStorage.setItem("mobilenum",data.MobileNumber);
-                localStorage.setItem("isAuth", true);
-                localStorage.setItem("isRemember", true);
-                window.location.href = "./verifyCode.html"
+            	var response = JSON.parse(http.responseText);
+                if(response.status) {
+                    localStorage.setItem("username",username);
+                    localStorage.setItem("passwd",passwd);
+                    localStorage.setItem("mobilenum",data.MobileNumber);
+                    window.location.href = "./verifyCode.html"
+                }
             }
             else if(http.status == 400){
             	var response = JSON.parse(http.responseText);
-            	alert(response.modelState[""][0]);
             }
             else{
             	alert('Please check your network connection');
             }
 		}
 	}
-	http.send(data1);
+	http.send(data);
 }
 
 function togglePasswordVisiblity(){
