@@ -29,10 +29,10 @@ class userClass {
         }
         return array('error'=>$this->error,'data'=>$this->data);
     }
-    public function initiateSignup ($email) {
+    public function initiateSignup ($email, $fname = '' , $lname = '', $pswd = '', $phone = '') {
         $userExist = $this->checkUserExist($email);
         if(!$userExist){
-            $createUser = $this->createUser($email);
+            $createUser = $this->createUser($email,$fname,$lname,$pswd,$phone);
             if(!$createUser) {
                 $this->error = 2;
             } else{
@@ -90,13 +90,29 @@ class userClass {
         }
         return array('error'=>$this->error,'data'=>$this->data);
     }
-    
-    private function createUser ($email) {
+    public function updateDeviceInfo ($mobileNum, $userId) {
+        $updateMobileNum = DB_Update(array(
+            'Table' => 'userdata',
+            'Fields'=> array(
+                'phone' => $mobileNum
+            ),
+            'clause' => 'id='.$userId
+        ));
+        if(!$updateMobileNum) {
+            $this->error = 1;
+        }
+        return array('error'=> $this->error, 'data' => array());
+    }
+    private function createUser ($email,$fname,$lname,$pswd,$phone) {
         $userId = DB_Insert(array(
             'Table' => 'userdata',
             'Fields'=> array(
                 'email' => $email,
                 'username' => $email,
+                'firstname' => $fname,
+                'lastname' => $lname,
+                'password' => md5($pswd),
+                'phone' => $phone,
                 'userstatus' => UNVERIFIED_USER,
                 'usertype' => NORMAL,
                 'logintype' => EMAIL,

@@ -7,7 +7,6 @@
         return true;
     }
     if (isAuth === "true") {
-        window.location.href = "home.html";
     } else {
         window.location.href = "./login.html";
     }

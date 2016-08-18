@@ -16,17 +16,21 @@ function onLogin() {
 	http.onreadystatechange=function(){
 		if(http.readyState == 4){
             if(http.status==200){
-/*
             	var response = JSON.parse(http.responseText);
+                if(response.status) {
+                    response = response.data;
+                    localStorage.setItem('fname',response.firstname);
+                    localStorage.setItem('lname',response.lastname);
+                    localStorage.setItem("username",response.username);
+                    localStorage.setItem("isAuth", true);
+                    localStorage.setItem("isRemember", true);
+                }
+
+/*
             	localStorage.setItem('access_token',response.access_token);
-            	localStorage.setItem('name',response.name);
             	localStorage.setItem('token_type',response.token_type);
             	localStorage.setItem('refresh_token',response.refresh_token);
             	localStorage.setItem('token_expires',new Date(response['.expires']).getTime());
-                localStorage.setItem("username",response.userName);
-                localStorage.setItem("passwd",passwd);
-                localStorage.setItem("isAuth", true);
-                localStorage.setItem("isRemember", true);
 */
                 window.location.href = "./home.html";
             }
