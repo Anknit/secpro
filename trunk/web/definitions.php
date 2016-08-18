@@ -16,4 +16,8 @@
     define("EMAIL",1);
     define("GOOGLE",2);
     define("FACEBOOK",3);
+
+/* Registrer Type */
+    define("REGISTER_BY_MAIL", 1);
+    define("REGISTER_BY_DEVICE", 2);
 ?>
