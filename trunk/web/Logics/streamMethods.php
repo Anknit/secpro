@@ -5,7 +5,7 @@ class streamDataClass {
     public function __construct () {
         $this->error = 0;
         $this->data = array();
-        $this->storePath = str_replace('web/Logics', 'uploads/', __DIR__);
+        $this->storePath = str_replace('web\Logics', 'uploads\\', __DIR__);
     }
     public function __destruct () {
         $this->error = 0;
@@ -23,11 +23,11 @@ class streamDataClass {
 		$new_size = $file_size/1024;
 */
         $fileName = time();
-        $fileType = $file['type'];
+        $fileType = substr($file['type'],(strrpos($file['type'],'/')+1));
         if(move_uploaded_file($file['tmp_name'],$this->storePath.$fileName.'.'.$fileType)) {
-			 $this->data['filename'] = $fileName.'.'.$fileType;
+            $this->data['filename'] = $fileName.'.'.$fileType;
 		} else {
-            this->error = 1;
+            $this->error = 1;
         }
         return array('error' => $this->error, 'data' => $this->data);
     }

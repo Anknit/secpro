@@ -75,8 +75,8 @@ if(isset($_REQUEST['requesttype'])) {
             $requestResponse = (new streamDataClass)->getDeviceImage();
             break;
         case 'upload':
-            if(ísset($_FILES)) {
-                $requestResponse = (new streamDataClass)->storeImage($_FILES);
+            if(isset($_FILES)) {
+                $requestResponse = (new streamDataClass)->storeImage($_FILES['file']);
             } else {
                 $requestResponse = array('error' => 'No files recieved');
             }
