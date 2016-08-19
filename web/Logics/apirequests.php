@@ -74,6 +74,13 @@ if(isset($_REQUEST['requesttype'])) {
         case 'imagestream':
             $requestResponse = (new streamDataClass)->getDeviceImage();
             break;
+        case 'upload':
+            if(ísset($_FILES)) {
+                $requestResponse = (new streamDataClass)->storeImage($_FILES);
+            } else {
+                $requestResponse = array('error' => 'No files recieved');
+            }
+            break;
         case 'register':
             if(isset($_REQUEST['email']) && trim($_REQUEST['email']) != '' && isset($_REQUEST['password']) && trim($_REQUEST['password']) != ''){
                 $requestResponse = (new userClass)->registerUser($_REQUEST['email'],$_REQUEST['password'],$_REQUEST['fname'],$_REQUEST['lname'],$_REQUEST['referrer'],$_REQUEST['lid']);
