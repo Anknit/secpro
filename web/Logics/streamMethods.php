@@ -1,4 +1,6 @@
 <?php
+include_once (__DIR__.'./../php/socket.io.php');
+//Create a socket.io connection and send a simple message
 class streamDataClass {
     private $error, $data, $storePath;
     
@@ -12,9 +14,24 @@ class streamDataClass {
         $this->data = array();
     }
     public function getDeviceImage () {
-        $imageUrl = $this->getImageUrl();
-        $imageComments = $this->getImageComments();
-        return array('error'=> 0, 'data' => array('url' => $imageUrl, 'comments' => $imageComments, 'timestamp' => microtime(true)));
+        
+        $socketio = new SocketIO();
+        $data = array("username" => "pappa");
+        if ($socketio->send('localhost', 3001, json_encode($data))){
+            $data = array("message" => "qwhbsd fhjs dhf sd", "from" => "pappa", "to" => "Abba", "action" => "oto_message");
+            if ($socketio->send('localhost', 3001, json_encode($data))){
+                $imageUrl = $this->getImageUrl();
+                $imageComments = $this->getImageComments();
+                return array('error'=> 0, 'data' => array('url' => $imageUrl, 'comments' => $imageComments, 'timestamp' => microtime(true)));
+            }
+        } else {
+            return array('error'=> 1, 'data' => array());
+        }
+/*
+        
+        $client = stream_socket_client("tcp://localhost:3001", $errno, $errorMessage);
+        fclose($client);
+*/
     }
     public function storeImage ($file) {
 /*
