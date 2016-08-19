@@ -4,33 +4,32 @@ angular.module('app.services', [])
 
 }])
 
-.service('uploadService',['$rootScope', function ($rootScope){
+.service('uploadService',['API_SERVICE_BASE', function (API_SERVICE_BASE){
+    function upload(fileURL, mime, success, error) {
+        var options = new $window.FileUploadOptions(),
+        options.fileKey = "file";
+        options.fileName = fileURL.substr(fileURL.lastIndexOf('/') + 1);
+        options.mimeType = mime;
+        options.params = {};
+        ft = new $window.FileTransfer();
+        ft.upload(fileURL, encodeURI(API_SERVICE_BASE + 'upload' ), success, error, options);
+    }
     var uploadService = {
         uploadCapture: function (mediaFiles) {
-            $rootScope.previewSrc = mediaFiles[0]['fullPath'];
-            $rootScope.$digest();
+            console.log(mediaFiles);
         }
     };
     return uploadService;
 }])
 
-.service('captureService', ['uploadService', function(uploadService){
+.service('captureService', [function(){
     var captureService = {
         autoModeId: 0,
         autoModeFreq: 5000,
         streamprivacy: 1,
-        autoModeCapture: function () {
-            this.autoModeId = window.setInterval(this.captureMedia, this.autoModeFreq);
-        },
-        manualModeCapture: function () {
-            this.captureMedia();
-        },
-        stopAutoModeCapture: function () {
-            window.clearInterval(this.autoModeId);
-        },
-        captureMedia: function () {
+        captureMedia: function (successCallback) {
             navigator.device.capture.captureImage(
-                uploadService.uploadCapture,
+                successCallback,
                 function () {
                     window.alert('Capture Failed');
                 },
