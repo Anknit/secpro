@@ -15,7 +15,7 @@ angular.module('app.controllers', [])
             $window.alert('Image upload failed by device');
         }
         function captureSuccess(mediaFiles) {
-            $scope.previewSrc = mediaFiles[0].fullpath;
+            $scope.previewSrc = mediaFiles[0].fullPath;
             uploadService.uploadCapture(mediaFiles, uploadSuccess, uploadFail);
         }
         function captureMedia() {
