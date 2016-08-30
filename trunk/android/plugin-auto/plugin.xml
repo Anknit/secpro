@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="cordova-plugin-auto-media-capture" version="1.0.0">
+    <name>Auto-Media-Capture</name>
+    <description>Cordova Auto Media Capture Plugin</description>
+    <author>Ankit Agarwal</author>
+    <license>Apache 2.0 License</license>
+    <keywords>cordova,auto media capture, media capture</keywords>
+    <js-module src="www/autoCapture.js" name="autoCapture">
+        <clobbers target="autoCapture" />
+    </js-module>
+    <dependency id="cordova-plugin-media-capture" version="1.3.0" />
+</plugin>
