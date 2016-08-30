@@ -5,17 +5,17 @@ angular.module('app.services', [])
 }])
 
 .service('uploadService',['API_SERVICE_BASE', '$window', function (API_SERVICE_BASE, $window){
-    function upload(fileURL, mime, success, error) {
+    function upload(fileURL, mime, success, error, payLoad) {
         var options = new $window.FileUploadOptions();
         options.fileKey = "file";
         options.fileName = fileURL.substr(fileURL.lastIndexOf('/') + 1);
         options.mimeType = mime;
-        options.params = {};
+        options.params = payLoad;
         ft = new $window.FileTransfer();
         ft.upload(fileURL, encodeURI(API_SERVICE_BASE + 'upload' ), success, error, options);
     }
     var uploadService = {
-        uploadCapture: function (mediaFiles, success, error) {
+        uploadCapture: function (mediaFiles, success, error, payLoad) {
             var f = mediaFiles[0];
             upload(f.localURL, f.type, function (response) {
                 success(angular.fromJson(response.response));
@@ -23,7 +23,7 @@ angular.module('app.services', [])
             }, function (response) {
                 error(response.response);
                 console.log(response);
-            });
+            },payLoad);
         }
     };
     return uploadService;

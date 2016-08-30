@@ -20,4 +20,9 @@
 /* Registrer Type */
     define("REGISTER_BY_MAIL", 1);
     define("REGISTER_BY_DEVICE", 2);
+
+/* Session Type */
+    define("MANUAL",1);
+    define("AUTO",2);
+
 ?>

@@ -1,6 +1,5 @@
 <?php
 include_once (__DIR__.'./../php/socket.io.php');
-//Create a socket.io connection and send a simple message
 class streamDataClass {
     private $error, $data, $storePath;
     
@@ -14,7 +13,6 @@ class streamDataClass {
         $this->data = array();
     }
     public function getDeviceImage () {
-        
         $socketio = new SocketIO();
         $data = array("username" => "pappa");
         if ($socketio->send('localhost', 3001, json_encode($data))){
@@ -27,21 +25,16 @@ class streamDataClass {
         } else {
             return array('error'=> 1, 'data' => array());
         }
-/*
-        
-        $client = stream_socket_client("tcp://localhost:3001", $errno, $errorMessage);
-        fclose($client);
-*/
     }
-    public function storeImage ($file) {
-/*
-     	$file_loc = $_FILES['file']['tmp_name'];
-		$file_size = $_FILES['file']['size'];
-		$new_size = $file_size/1024;
-*/
+    public function storeImage ($file, $uploadSessionId) {
         $fileName = time();
+        $userId = $_SESSION['userdata']['uid'];
         $fileType = substr($file['type'],(strrpos($file['type'],'/')+1));
-        if(move_uploaded_file($file['tmp_name'],$this->storePath.$fileName.'.'.$fileType)) {
+        $completePath = $this->storePath.$userId.'/'.$uploadSessionId;
+        if (!file_exists($completePath)) {
+            mkdir($completePath, 0777, true);
+        }
+        if(move_uploaded_file($file['tmp_name'],$completePath.'/'.$fileName.'.'.$fileType)) {
             $this->data['filename'] = $fileName.'.'.$fileType;
 		} else {
             $this->error = 1;
