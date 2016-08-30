@@ -2,6 +2,7 @@
 header('Access-Control-Allow-Origin: *');
 require_once __DIR__.'./../require.php';
 require_once __DIR__.'/userMethods.php';
+require_once __DIR__.'/uploadSession.php';
 require_once __DIR__.'/streamMethods.php';
 require_once __DIR__.'./../../Common/php/MailMgr.php';
 require_once __DIR__.'/mailMethods.php';
@@ -76,7 +77,36 @@ if(isset($_REQUEST['requesttype'])) {
             break;
         case 'upload':
             if(isset($_FILES)) {
-                $requestResponse = (new streamDataClass)->storeImage($_FILES['file']);
+                $sessionId = 0;
+                if (isset($_SESSION['uploadSession']) && isset($_SESSION['uploadSession']['sessId'])) {
+                    $sessionId = $_SESSION['uploadSession']['sessId'];
+                    $updateSession  = (new uploadSession)->updateSession();
+                } else {
+                    $sesstype = MANUAL;
+                    if(isset($_REQUEST['sesstype'])) {
+                        $sessType = $_REQUEST['sesstype'];
+                    }
+                    $sessName = time();
+                    if(isset($_REQUEST['sessname'])) {
+                        $sessName = $_REQUEST['sessname'];
+                    }
+                    $uploadSession = (new uploadSession)->startSession();
+                    if($uploadSession['error'] == 0) {
+                        $sessionId = $uploadSession['data']['sessid'];
+                    } else {
+                        $requestResponse = array('error' => 'No upload session created');
+                    }
+                }
+                if($sessionId) {
+                    $requestResponse = (new streamDataClass)->storeImage($_FILES['file'], $sessionId);
+                    if ($requestResponse['error'] == 0) {
+                        if($sesstype == MANUAL) {
+                            $closeSession = (new uploadSession)->closeUploadSession();
+                        }
+                    } else {
+                        $requestResponse = array('error' => 'File Upload failed');
+                    }
+                }
             } else {
                 $requestResponse = array('error' => 'No files recieved');
             }

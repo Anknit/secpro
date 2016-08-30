@@ -3,6 +3,7 @@ angular.module('app.controllers', [])
   
     .controller('homeCtrl', ['$scope', '$stateParams', 'captureService', 'uploadService', '$window', '$interval', function ($scope, $stateParams, captureService, uploadService, $window, $interval) {
         'use strict';
+        var uploadParams = {};
         function uploadSuccess(response) {
             if (response.status) {
                 $window.alert('Image uploaded successfully');
@@ -21,13 +22,16 @@ angular.module('app.controllers', [])
             captureService.captureMedia(captureSuccess);
         }
         $scope.autoModeCapture = function () {
+            uploadParams.sesstype = 2;
             captureService.autoModeId = $interval(captureMedia, captureService.autoModeFreq);
         };
         $scope.stopAutoMode = function () {
             $interval.cancel(captureService.autoModeId);
             captureService.autoModeId = undefined;
+            delete uploadParams.sesstype;
         };
         $scope.manualCapture = function () {
+            uploadParams.sesstype = 1;
             captureMedia();
         };
     }])
