@@ -6,7 +6,7 @@ class streamDataClass {
     public function __construct () {
         $this->error = 0;
         $this->data = array();
-        $this->storePath = str_replace('web\Logics', 'uploads\\', __DIR__);
+        $this->storePath = str_replace('web/Logics', 'uploads/', __DIR__);
     }
     public function __destruct () {
         $this->error = 0;

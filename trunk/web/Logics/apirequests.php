@@ -80,9 +80,10 @@ if(isset($_REQUEST['requesttype'])) {
                 $sessionId = 0;
                 if (isset($_SESSION['uploadSession']) && isset($_SESSION['uploadSession']['sessId'])) {
                     $sessionId = $_SESSION['uploadSession']['sessId'];
+                    $sesstype = $_SESSION['uploadSession']['sessType'];
                     $updateSession  = (new uploadSession)->updateSession();
                 } else {
-                    $sesstype = MANUAL;
+	            $sesstype = MANUAL;
                     if(isset($_REQUEST['sesstype'])) {
                         $sessType = $_REQUEST['sesstype'];
                     }
@@ -90,7 +91,7 @@ if(isset($_REQUEST['requesttype'])) {
                     if(isset($_REQUEST['sessname'])) {
                         $sessName = $_REQUEST['sessname'];
                     }
-                    $uploadSession = (new uploadSession)->startSession();
+                    $uploadSession = (new uploadSession)->startSession($sessName, $sessType);
                     if($uploadSession['error'] == 0) {
                         $sessionId = $uploadSession['data']['sessid'];
                     } else {
@@ -101,7 +102,7 @@ if(isset($_REQUEST['requesttype'])) {
                     $requestResponse = (new streamDataClass)->storeImage($_FILES['file'], $sessionId);
                     if ($requestResponse['error'] == 0) {
                         if($sesstype == MANUAL) {
-                            $closeSession = (new uploadSession)->closeUploadSession();
+//                            $closeSession = (new uploadSession)->closeUploadSession();
                         }
                     } else {
                         $requestResponse = array('error' => 'File Upload failed');
