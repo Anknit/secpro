@@ -1,8 +1,8 @@
 <ion-view title="Home" id="page1">
     <ion-content padding="true" class="has-header">
-        <div id="home-top" data-ng-show="uploadConfirm" class="ng-cloak">
+        <div id="home-top" data-ng-show="previewCapture" class="ng-cloak">
             <div class="image-area-home">
-                <img data-ng-src="{{previewSrc}}" alt="Preview" width="100%" height="auto" />
+                <img data-ng-src="{{mediaFiles[0].fullPath}}" alt="Preview" width="100%" height="auto" />
             </div>
         </div>
         <button id="home-button1" style="border-radius:10px 10px 10px 10px;" class=" button button-royal  button-block icon ion-upload " data-ng-click="manualCapture()" data-ng-hide="uploadConfirm">Upload</button>
