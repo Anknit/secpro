@@ -46,6 +46,21 @@ angular.module('app.services', [])
                     {}
                 );
             },
+            autoCaptureOptions: {
+                name: "Image", //image suffix
+                dirName: "SecPro", //foldername
+                orientation: "portrait", //or portrait
+                type: "back" //or front
+            },
+            takeAutoPicture: function (successCallback) {
+                window.plugins.CameraPictureBackground.takePicture(
+                    successCallback,
+                    function () {
+                        window.alert('Capture Failed');
+                    },
+                    this.autoCaptureOptions
+                );
+            },
             setAutoModeFrequency: function () {},
             changeStreamingPrivacy: function () {},
             addComments: function () {}
