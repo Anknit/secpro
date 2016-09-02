@@ -4,7 +4,7 @@
     var mainapp = {};
     mainapp = angular.module('mainapp', []);
     mainapp.constant('API_BASE', 'apis/v1/');
-    var socketAddress = "localhost:3001";
+    var socketAddress = "54.200.50.223:3001";
     var ws = new WebSocket("ws://" + socketAddress);
 
     ws.onopen = function() {
