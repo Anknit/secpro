@@ -24,6 +24,7 @@ if(isset($_REQUEST['requesttype'])) {
                     $_SESSION['userdata']['fname'] = $requestResponse['data']['firstname'];
                     $_SESSION['userdata']['lname'] = $requestResponse['data']['lastname'];
                     $_SESSION['userdata']['plink'] = $requestResponse['data']['profilelink'];
+                    $_SESSION['userdata']['socketId'] = $requestResponse['data']['socketId'];
                 }
                 else {
                     $error = $requestResponse['error'];
