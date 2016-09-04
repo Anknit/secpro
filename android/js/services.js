@@ -5,6 +5,34 @@ angular.module('app.services', [])
         'use strict';
     }])
 
+    .service('notificationService', ['CONNECTION_BASE', 'CONNECTION_HASH', '$window', '$log', function (CONNECTION_BASE, CONNECTION_HASH, $window, $log) {
+        'use strict';
+        var connection,
+            notificationService = {
+                connect: function () {
+                    connection = new $window.WebSocket(CONNECTION_BASE);
+                    var notifyServiceObj = this;
+                    connection.onopen = function () {
+                        notifyServiceObj.register();
+                    };
+                    connection.onclose = function () {
+                    };
+                    connection.onmessage = function (payload) {
+                    };
+                    connection.onerror = function (message) {
+                        $log.error(message);
+                    };
+                },
+                register: function () {
+                    connection.send(JSON.stringify({username : CONNECTION_HASH, action: "register"}));
+                },
+                notify: function (msg) {
+                    connection.send(JSON.stringify({from : CONNECTION_HASH, action: "oto_message", to: CONNECTION_HASH + "-client", message: msg}));
+                }
+            };
+        return notificationService;
+    }])
+
     .service('uploadService', ['API_SERVICE_BASE', '$window', '$log', function (API_SERVICE_BASE, $window, $log) {
         'use strict';
         function upload(fileURL, mime, success, error, payLoad) {

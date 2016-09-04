@@ -1,2 +1,3 @@
-var authServiceBase = 'http://localhost/web_stuff/trunk/assembla/ankit/secpro/auth/';
-var apiServiceBase = 'http://localhost/web_stuff/trunk/assembla/ankit/secpro/apis/v1/';
+var authServiceBase = 'http://54.200.50.223/secpro/auth/';
+var apiServiceBase = 'http://54.200.50.223/secpro/apis/v1/';
+var connectionBase = 'ws://54.200.50.223';
