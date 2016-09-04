@@ -22,8 +22,9 @@ function onLogin() {
                     localStorage.setItem('fname',response.firstname);
                     localStorage.setItem('lname',response.lastname);
                     localStorage.setItem("username",response.username);
+                    localStorage.setItem("password",passwd);
+                    localStorage.setItem("socketId",response.socketId);
                     localStorage.setItem("isAuth", true);
-                    localStorage.setItem("isRemember", true);
                 }
 
 /*

@@ -7,6 +7,7 @@
         return true;
     }
     if (isAuth === "true") {
+        window.connectionHash = window.localStorage.getItem('socketId');
     } else {
         window.location.href = "./login.html";
     }
@@ -14,6 +15,8 @@
 angular.module('secpro', ['ionic', 'app.controllers', 'app.routes', 'app.directives', 'app.services'])
     .constant('AUTH_SERVICE_BASE', window.authServiceBase)
     .constant('API_SERVICE_BASE', window.apiServiceBase)
+    .constant('CONNECTION_HASH', window.connectionHash)
+    .constant('CONNECTION_BASE', window.connectionBase)
     .run(function ($ionicPlatform) {
         'use strict';
         $ionicPlatform.ready(function () {
