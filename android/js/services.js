@@ -94,4 +94,50 @@ angular.module('app.services', [])
             addComments: function () {}
         };
         return captureService;
+    }])
+    
+    .service('locationService', [function () {
+        'use strict';
+        var ob_options = {
+            maximumAge: 3600000,
+            enableHighAccuracy: true
+        }, locationService = {
+            fn_getPosition: function (fn_successCallback, fn_errorCallback) {
+                ob_options.timeout = 10000;
+                navigator.geolocation.getCurrentPosition(fn_successCallback, fn_errorCallback, ob_options);
+            },
+            fn_watchPosition: function (fn_successCallback, fn_errorCallback) {
+                ob_options.timeout = 3000;
+                navigator.geolocation.watchPosition(fn_successCallback, fn_errorCallback, ob_options);
+            },
+            fn_setOptions: function (ob_configObj) {
+                var key;
+                for (key in ob_configObj) {
+                    if (ob_configObj.hasOwnProperty(key)) {
+                        ob_options[key] = ob_configObj[key];
+                    }
+                }
+            }
+        };
+        return locationService;
+    }])
+
+    .service('trackingService', ['locationService', function (locationService) {
+        'use strict';
+        function locationRecieveSuccess(response) {
+            window.alert(response);
+        }
+        function locationRecieveFailure(response) {
+            window.alert(response);
+        }
+        var trackingService = {
+            trackingFreq: 5000,
+            getLocation: function () {
+                locationService.fn_getPosition(locationRecieveSuccess, locationRecieveFailure);
+            },
+            sendLocation: function () {
+                locationService.fn_getPosition(locationRecieveSuccess, locationRecieveFailure);
+            }
+        };
+        return trackingService;
     }]);

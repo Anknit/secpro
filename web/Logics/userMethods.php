@@ -15,7 +15,7 @@ class userClass {
                 if(md5($password) == $userRow[0]['password']){
                     unset($userRow[0]['password']);
                     $this->data = $userRow[0];
-                    $this->data['socketid'] = $userRow[0]['id'].time();
+                    $this->data['socketId'] = $userRow[0]['id'].time();
                 }
                 else{
                     $this->error = 3;
