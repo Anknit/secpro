@@ -10,8 +10,10 @@ angular.module('app.controllers', [])
         $scope.mediaFiles = [];
         function uploadSuccess(response) {
             if (response.status) {
+                ws.send(JSON.stringify({type:'picNotify', data: response}))
                 $window.alert('Image uploaded successfully');
                 $scope.uploadConfirm = false;
+                
                 $scope.previewCapture = false;
                 $scope.comments = '';
             } else {

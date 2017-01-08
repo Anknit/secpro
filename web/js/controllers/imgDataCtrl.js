@@ -1,5 +1,5 @@
 /*global angular, $*/
-(function () {
+(function (ws) {
     'use strict';
     angular.module('mainapp').controller('imageDataController', ['$scope', '$rootScope', '$http', '$interval', '$window', 'API_BASE', function ($scope, $rootScope, $http, $interval, $window, API_BASE) {
         $scope.streamdata = {imgsrc: '', comments: '', dataObj: []};
@@ -26,5 +26,18 @@
             $scope.fetchImageStream();
             intervalId = $interval($scope.fetchImageStream, $scope.updateFreq);
         };
+        ws.onmessage = function (payload) {
+            var data = payload.data;
+            if(data && typeof data == 'string') {
+                data = JSON.parse(data);
+                if(data && data.type == 'notification') {
+                    $scope.streamdata.imgsrc = data.data.sourceData.data.filename;
+                    data.data.sourceData.timestamp = new Date().getTime();
+                    $scope.streamdata.comments = '';
+                    $scope.streamdata.dataObj.unshift(data.data.sourceData);
+                    $scope.$apply();
+                }
+            }
+        };
     }]);
-}());
+}(window.ws));
